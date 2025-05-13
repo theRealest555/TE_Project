@@ -1,0 +1,6 @@
+@TE_Project_HostAddress = http://localhost:5268
+
+GET {{TE_Project_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
