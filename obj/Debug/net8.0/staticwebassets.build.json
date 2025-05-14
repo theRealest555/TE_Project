@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "7l30KLdzbmyoAOlXK1Bf2VPI5QbIlSO+JXF80N4Fg1U=",
+  "Source": "TE Project",
+  "BasePath": "_content/TE Project",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TE Project\\wwwroot",
+      "Source": "TE Project",
+      "ContentRoot": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\",
+      "BasePath": "_content/TE Project",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}

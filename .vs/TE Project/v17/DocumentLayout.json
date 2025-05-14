@@ -1,0 +1,1039 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\entities\\usertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:entities\\usertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\exportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\exportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\dtos\\export\\exportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:dtos\\export\\exportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\controllers\\exportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:controllers\\exportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\middleware\\errorhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:middleware\\errorhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\validators\\auth\\changepassworddtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:validators\\auth\\changepassworddtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\configurations\\corsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:configurations\\corsconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\dtos\\auth\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:dtos\\auth\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\extensions\\applicationbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:extensions\\applicationbuilderextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\enums\\adminrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:enums\\adminrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\youne\\.nuget\\packages\\epplus\\6.2.10\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\repositories\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:repositories\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\dtos\\auth\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:dtos\\auth\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\entities\\uploadedfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:entities\\uploadedfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\configurations\\swaggerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:configurations\\swaggerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\submissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\submissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\dtos\\submission\\submissionresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:dtos\\submission\\submissionresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\repositories\\submissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:repositories\\submissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\validators\\submission\\submissiondtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:validators\\submission\\submissiondtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\dtos\\submission\\submissiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:dtos\\submission\\submissiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\entities\\submission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:entities\\submission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:extensions\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\middleware\\securityheadersmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:middleware\\securityheadersmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\data\\repositoryextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:data\\repositoryextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\validators\\auth\\registeradmindtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:validators\\auth\\registeradmindtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\dtos\\auth\\registeradmindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:dtos\\auth\\registeradmindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\helpers\\regexpatterns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:helpers\\regexpatterns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\plantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\plantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\repositories\\plantrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:repositories\\plantrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\dtos\\plant\\plantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:dtos\\plant\\plantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\controllers\\plantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:controllers\\plantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\entities\\plant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:entities\\plant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\validators\\auth\\logindtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:validators\\auth\\logindtovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\dtos\\auth\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:dtos\\auth\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\helpers\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:helpers\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\configurations\\jwtconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:configurations\\jwtconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\interfaces\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\interfaces\\isubmissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\interfaces\\isubmissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\repositories\\interfaces\\isubmissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:repositories\\interfaces\\isubmissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\repositories\\interfaces\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:repositories\\interfaces\\irepositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\interfaces\\iplantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\interfaces\\iplantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\repositories\\interfaces\\iplantrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:repositories\\interfaces\\iplantrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\interfaces\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\interfaces\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\interfaces\\iexportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\interfaces\\iexportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\helpers\\filevalidationhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:helpers\\filevalidationhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\enums\\filetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:enums\\filetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|c:\\users\\youne\\onedrive\\bureau\\te\\te project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BD4CBD98-0118-455B-9F43-A52FB9733651}|TE Project.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ErrorHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Middleware\\ErrorHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "Middleware\\ErrorHandlingMiddleware.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Middleware\\ErrorHandlingMiddleware.cs",
+              "RelativeToolTip": "Middleware\\ErrorHandlingMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:46.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExportController.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\ExportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ExportController.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\ExportController.cs",
+              "RelativeToolTip": "Controllers\\ExportController.cs",
+              "ViewState": "AgIAACYAAAAAy8zMzMwRwFIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:53.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExportDto.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Export\\ExportDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Export\\ExportDto.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Export\\ExportDto.cs",
+              "RelativeToolTip": "DTOs\\Export\\ExportDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:13.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ExportService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\ExportService.cs",
+              "RelativeDocumentMoniker": "Services\\ExportService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\ExportService.cs",
+              "RelativeToolTip": "Services\\ExportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:10.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FileService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\FileService.cs",
+              "RelativeDocumentMoniker": "Services\\FileService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\FileService.cs",
+              "RelativeToolTip": "Services\\FileService.cs",
+              "ViewState": "AgIAAAoAAACAAAAAAAAxwAgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:11.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserToken.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\UserToken.cs",
+              "RelativeDocumentMoniker": "Entities\\UserToken.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\UserToken.cs",
+              "RelativeToolTip": "Entities\\UserToken.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAmwBUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:28.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChangePasswordDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Validators\\Auth\\ChangePasswordDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\Auth\\ChangePasswordDtoValidator.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Validators\\Auth\\ChangePasswordDtoValidator.cs",
+              "RelativeToolTip": "Validators\\Auth\\ChangePasswordDtoValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:27.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CorsConfig.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Configurations\\CorsConfig.cs",
+              "RelativeDocumentMoniker": "Configurations\\CorsConfig.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Configurations\\CorsConfig.cs",
+              "RelativeToolTip": "Configurations\\CorsConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:43.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ChangePasswordDto.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Auth\\ChangePasswordDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Auth\\ChangePasswordDto.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Auth\\ChangePasswordDto.cs",
+              "RelativeToolTip": "DTOs\\Auth\\ChangePasswordDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:07.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAACIBAAAAAAAAAAAswCUBAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:10.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:51.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ApplicationBuilderExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Extensions\\ApplicationBuilderExtensions.cs",
+              "RelativeDocumentMoniker": "Extensions\\ApplicationBuilderExtensions.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Extensions\\ApplicationBuilderExtensions.cs",
+              "RelativeToolTip": "Extensions\\ApplicationBuilderExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:35.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAmwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:59.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AdminRole.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Enums\\AdminRole.cs",
+              "RelativeDocumentMoniker": "Enums\\AdminRole.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Enums\\AdminRole.cs",
+              "RelativeToolTip": "Enums\\AdminRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:31.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:49.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SubmissionsController.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\SubmissionsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SubmissionsController.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\SubmissionsController.cs",
+              "RelativeToolTip": "Controllers\\SubmissionsController.cs",
+              "ViewState": "AgIAAHEAAADgMjMzM7McwHIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:55.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAswBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:34.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "readme.txt",
+              "DocumentMoniker": "C:\\Users\\youne\\.nuget\\packages\\epplus\\6.2.10\\readme.txt",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\epplus\\6.2.10\\readme.txt",
+              "ToolTip": "C:\\Users\\youne\\.nuget\\packages\\epplus\\6.2.10\\readme.txt",
+              "RelativeToolTip": "..\\..\\..\\..\\.nuget\\packages\\epplus\\6.2.10\\readme.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-13T18:37:45.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "RepositoryBase.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\RepositoryBase.cs",
+              "RelativeDocumentMoniker": "Repositories\\RepositoryBase.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\RepositoryBase.cs",
+              "RelativeToolTip": "Repositories\\RepositoryBase.cs",
+              "ViewState": "AgIAAC4AAAAwAAAAAIAfwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:58.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SeedData.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Data\\SeedData.cs",
+              "RelativeDocumentMoniker": "Data\\SeedData.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Data\\SeedData.cs",
+              "RelativeToolTip": "Data\\SeedData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:01.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:00.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Auth\\UserDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Auth\\UserDto.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Auth\\UserDto.cs",
+              "RelativeToolTip": "DTOs\\Auth\\UserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:10.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Entities\\User.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\User.cs",
+              "RelativeToolTip": "Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:27.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "UploadedFile.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\UploadedFile.cs",
+              "RelativeDocumentMoniker": "Entities\\UploadedFile.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\UploadedFile.cs",
+              "RelativeToolTip": "Entities\\UploadedFile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:26.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "Services\\TokenService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\TokenService.cs",
+              "RelativeToolTip": "Services\\TokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:14.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "SwaggerConfig.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Configurations\\SwaggerConfig.cs",
+              "RelativeDocumentMoniker": "Configurations\\SwaggerConfig.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Configurations\\SwaggerConfig.cs",
+              "RelativeToolTip": "Configurations\\SwaggerConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:46.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "SubmissionService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\SubmissionService.cs",
+              "RelativeDocumentMoniker": "Services\\SubmissionService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\SubmissionService.cs",
+              "RelativeToolTip": "Services\\SubmissionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:13.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "SubmissionResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Submission\\SubmissionResponseDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Submission\\SubmissionResponseDto.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Submission\\SubmissionResponseDto.cs",
+              "RelativeToolTip": "DTOs\\Submission\\SubmissionResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:19.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "SubmissionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\SubmissionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\SubmissionRepository.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\SubmissionRepository.cs",
+              "RelativeToolTip": "Repositories\\SubmissionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:59.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "SubmissionDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Validators\\Submission\\SubmissionDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\Submission\\SubmissionDtoValidator.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Validators\\Submission\\SubmissionDtoValidator.cs",
+              "RelativeToolTip": "Validators\\Submission\\SubmissionDtoValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:31.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "SubmissionDto.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Submission\\SubmissionDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Submission\\SubmissionDto.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Submission\\SubmissionDto.cs",
+              "RelativeToolTip": "DTOs\\Submission\\SubmissionDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:18.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Submission.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\Submission.cs",
+              "RelativeDocumentMoniker": "Entities\\Submission.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\Submission.cs",
+              "RelativeToolTip": "Entities\\Submission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:25.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Extensions\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Extensions\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "Extensions\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:37.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "SecurityHeadersMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Middleware\\SecurityHeadersMiddleware.cs",
+              "RelativeDocumentMoniker": "Middleware\\SecurityHeadersMiddleware.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Middleware\\SecurityHeadersMiddleware.cs",
+              "RelativeToolTip": "Middleware\\SecurityHeadersMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:47.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "RepositoryExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Data\\RepositoryExtensions.cs",
+              "RelativeDocumentMoniker": "Data\\RepositoryExtensions.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Data\\RepositoryExtensions.cs",
+              "RelativeToolTip": "Data\\RepositoryExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:00.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "RegisterAdminDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Validators\\Auth\\RegisterAdminDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\Auth\\RegisterAdminDtoValidator.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Validators\\Auth\\RegisterAdminDtoValidator.cs",
+              "RelativeToolTip": "Validators\\Auth\\RegisterAdminDtoValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:28.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RegisterAdminDto.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Auth\\RegisterAdminDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Auth\\RegisterAdminDto.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Auth\\RegisterAdminDto.cs",
+              "RelativeToolTip": "DTOs\\Auth\\RegisterAdminDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:09.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "RegexPatterns.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Helpers\\RegexPatterns.cs",
+              "RelativeDocumentMoniker": "Helpers\\RegexPatterns.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Helpers\\RegexPatterns.cs",
+              "RelativeToolTip": "Helpers\\RegexPatterns.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:42.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "PlantService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\PlantService.cs",
+              "RelativeDocumentMoniker": "Services\\PlantService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\PlantService.cs",
+              "RelativeToolTip": "Services\\PlantService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:12.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "PlantRepository.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\PlantRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\PlantRepository.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\PlantRepository.cs",
+              "RelativeToolTip": "Repositories\\PlantRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:57.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "PlantDto.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Plant\\PlantDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Plant\\PlantDto.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Plant\\PlantDto.cs",
+              "RelativeToolTip": "DTOs\\Plant\\PlantDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:16.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "PlantController.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\PlantController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PlantController.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Controllers\\PlantController.cs",
+              "RelativeToolTip": "Controllers\\PlantController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:54.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Plant.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\Plant.cs",
+              "RelativeDocumentMoniker": "Entities\\Plant.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Entities\\Plant.cs",
+              "RelativeToolTip": "Entities\\Plant.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:24.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "LoginDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Validators\\Auth\\LoginDtoValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\Auth\\LoginDtoValidator.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Validators\\Auth\\LoginDtoValidator.cs",
+              "RelativeToolTip": "Validators\\Auth\\LoginDtoValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:27.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Auth\\LoginDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Auth\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\DTOs\\Auth\\LoginDto.cs",
+              "RelativeToolTip": "DTOs\\Auth\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:08.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "JwtHelper.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Helpers\\JwtHelper.cs",
+              "RelativeDocumentMoniker": "Helpers\\JwtHelper.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Helpers\\JwtHelper.cs",
+              "RelativeToolTip": "Helpers\\JwtHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:41.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "JwtConfig.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Configurations\\JwtConfig.cs",
+              "RelativeDocumentMoniker": "Configurations\\JwtConfig.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Configurations\\JwtConfig.cs",
+              "RelativeToolTip": "Configurations\\JwtConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:08:44.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:05.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ITokenService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\ITokenService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\ITokenService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\ITokenService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\ITokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:22.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ISubmissionService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\ISubmissionService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\ISubmissionService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\ISubmissionService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\ISubmissionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:21.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "ISubmissionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\Interfaces\\ISubmissionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\ISubmissionRepository.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\Interfaces\\ISubmissionRepository.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\ISubmissionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:04.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "IRepositoryBase.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\Interfaces\\IRepositoryBase.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IRepositoryBase.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\Interfaces\\IRepositoryBase.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\IRepositoryBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:03.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "IPlantService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\IPlantService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IPlantService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\IPlantService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IPlantService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:19.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "IPlantRepository.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\Interfaces\\IPlantRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IPlantRepository.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Repositories\\Interfaces\\IPlantRepository.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\IPlantRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:02.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "IFileService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\IFileService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IFileService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\IFileService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IFileService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:18.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "IExportService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\IExportService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IExportService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\IExportService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IExportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:17.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Services\\Interfaces\\IAuthService.cs",
+              "RelativeToolTip": "Services\\Interfaces\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:10:16.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "FileValidationHelper.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Helpers\\FileValidationHelper.cs",
+              "RelativeDocumentMoniker": "Helpers\\FileValidationHelper.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Helpers\\FileValidationHelper.cs",
+              "RelativeToolTip": "Helpers\\FileValidationHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:40.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "FileType.cs",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Enums\\FileType.cs",
+              "RelativeDocumentMoniker": "Enums\\FileType.cs",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\Enums\\FileType.cs",
+              "RelativeToolTip": "Enums\\FileType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:09:32.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-13T18:11:49.926Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

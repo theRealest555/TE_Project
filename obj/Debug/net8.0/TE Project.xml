@@ -1,0 +1,606 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TE Project</name>
+    </assembly>
+    <members>
+        <member name="T:TE_Project.Controllers.AdminController">
+            <summary>
+            Controller for admin-specific operations
+            </summary>
+        </member>
+        <member name="M:TE_Project.Controllers.AdminController.GetAllAdmins">
+            <summary>
+            Gets all admin users (Super Admin only)
+            </summary>
+            <returns>List of admin users</returns>
+            <response code="200">Returns the list of admin users</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user is not a Super Admin</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AdminController.GetAdminsByPlant(System.Int32)">
+            <summary>
+            Get admin users by plant ID (Super Admin only)
+            </summary>
+            <param name="plantId">Plant ID</param>
+            <returns>List of admin users for the plant</returns>
+            <response code="200">Returns the list of admin users for the plant</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user is not a Super Admin</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AdminController.ResetPassword(System.String)">
+            <summary>
+            Reset an admin's password (Super Admin only)
+            </summary>
+            <param name="userId">User ID to reset password for</param>
+            <returns>Success message</returns>
+            <response code="200">Returns success message with the new password</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user is not a Super Admin</response>
+            <response code="404">If the user is not found</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AdminController.DeleteAdmin(System.String)">
+            <summary>
+            Delete an admin user (Super Admin only)
+            </summary>
+            <param name="userId">User ID to delete</param>
+            <returns>Success message</returns>
+            <response code="200">Returns success message</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user is not a Super Admin</response>
+            <response code="404">If the user is not found</response>
+        </member>
+        <member name="T:TE_Project.Controllers.AuthController">
+            <summary>
+            Controller for authentication and user management operations
+            </summary>
+        </member>
+        <member name="M:TE_Project.Controllers.AuthController.Login(TE_Project.DTOs.Auth.LoginDto)">
+            <summary>
+            Authenticates a user and returns a JWT token
+            </summary>
+            <param name="model">Login credentials</param>
+            <returns>JWT token and user information</returns>
+            <response code="200">Returns the JWT token and user information</response>
+            <response code="401">If the credentials are invalid</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AuthController.Logout">
+            <summary>
+            Logs out the current user by revoking their JWT token
+            </summary>
+            <returns>Success message</returns>
+            <response code="200">If the logout was successful</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AuthController.LogoutAllDevices">
+            <summary>
+            Logs out the user from all devices by revoking all their active tokens
+            </summary>
+            <returns>Success message</returns>
+            <response code="200">If the logout from all devices was successful</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AuthController.RegisterAdmin(TE_Project.DTOs.Auth.RegisterAdminDto)">
+            <summary>
+            Registers a new admin user
+            </summary>
+            <param name="model">Admin registration details</param>
+            <returns>Success message and user ID</returns>
+            <response code="200">Returns success message and created user ID</response>
+            <response code="400">If the input is invalid</response>
+            <response code="403">If the user is not authorized to register an admin</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AuthController.ChangePassword(TE_Project.DTOs.Auth.ChangePasswordDto)">
+            <summary>
+            Changes the password of the current user
+            </summary>
+            <param name="model">Change password details</param>
+            <returns>Success message</returns>
+            <response code="200">Returns success message if password was changed</response>
+            <response code="400">If the input is invalid or current password is incorrect</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AuthController.GetProfile">
+            <summary>
+            Gets the profile information of the current user
+            </summary>
+            <returns>User profile information</returns>
+            <response code="200">Returns the user profile</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the user is not found</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AuthController.GetActiveSessions">
+            <summary>
+            Gets all active sessions (tokens) for the current user
+            </summary>
+            <returns>List of active sessions</returns>
+            <response code="200">Returns list of active sessions</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
+        <member name="T:TE_Project.Controllers.ExportController">
+            <summary>
+            Controller for exporting data to Excel
+            </summary>
+        </member>
+        <member name="M:TE_Project.Controllers.ExportController.ExportToExcel(TE_Project.DTOs.Export.ExportDto)">
+            <summary>
+            Generates an Excel report based on the specified format and plant
+            </summary>
+            <param name="exportDto">Export configuration</param>
+            <returns>Excel file</returns>
+            <response code="200">Returns the Excel file</response>
+            <response code="400">If the input is invalid</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user doesn't have access to the requested data</response>
+        </member>
+        <member name="T:TE_Project.Controllers.PlantsController">
+            <summary>
+            Controller for managing plants
+            </summary>
+        </member>
+        <member name="M:TE_Project.Controllers.PlantsController.GetAll">
+            <summary>
+            Gets all plants
+            </summary>
+            <returns>List of plants</returns>
+            <response code="200">Returns all plants</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
+        <member name="M:TE_Project.Controllers.PlantsController.GetById(System.Int32)">
+            <summary>
+            Gets a plant by ID
+            </summary>
+            <param name="id">Plant ID</param>
+            <returns>Plant details</returns>
+            <response code="200">Returns the plant</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="404">If the plant is not found</response>
+        </member>
+        <member name="T:TE_Project.Controllers.SubmissionsController">
+            <summary>
+            Controller for managing submissions
+            </summary>
+        </member>
+        <member name="M:TE_Project.Controllers.SubmissionsController.Create(TE_Project.DTOs.Submission.SubmissionDto)">
+            <summary>
+            Creates a new submission with uploaded files
+            </summary>
+            <param name="model">Submission data and files</param>
+            <returns>Created submission ID</returns>
+            <response code="201">Returns the newly created submission ID</response>
+            <response code="400">If the submission data is invalid</response>
+        </member>
+        <member name="M:TE_Project.Controllers.SubmissionsController.GetById(System.Int32)">
+            <summary>
+            Gets a submission by ID
+            </summary>
+            <param name="id">Submission ID</param>
+            <returns>Submission details</returns>
+            <response code="200">Returns the submission</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user doesn't have access to the submission's plant</response>
+            <response code="404">If the submission is not found</response>
+        </member>
+        <member name="M:TE_Project.Controllers.SubmissionsController.GetAll">
+            <summary>
+            Gets all submissions (Super Admin only)
+            </summary>
+            <returns>List of all submissions</returns>
+            <response code="200">Returns all submissions</response>
+            <response code="401">If the user is not authenticated</response>
+            <response code="403">If the user is not a Super Admin</response>
+        </member>
+        <member name="T:TE_Project.DTOs.Auth.ChangePasswordDto">
+            <summary>
+            Data transfer object for changing user password
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.ChangePasswordDto.CurrentPassword">
+            <summary>
+            Current password of the user
+            </summary>
+            <example>OldPassword123!</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.ChangePasswordDto.NewPassword">
+            <summary>
+            New password for the user
+            </summary>
+            <example>NewPassword456!</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.ChangePasswordDto.ConfirmPassword">
+            <summary>
+            Confirmation of the new password
+            </summary>
+            <example>NewPassword456!</example>
+        </member>
+        <member name="T:TE_Project.DTOs.Auth.LoginDto">
+            <summary>
+            Data transfer object for user login
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.LoginDto.Email">
+            <summary>
+            Email address of the user
+            </summary>
+            <example>admin@example.com</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.LoginDto.Password">
+            <summary>
+            Password of the user
+            </summary>
+            <example>Password123!</example>
+        </member>
+        <member name="T:TE_Project.DTOs.Auth.RegisterAdminDto">
+            <summary>
+            Data transfer object for registering an admin user
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.RegisterAdminDto.FullName">
+            <summary>
+            Full name of the admin user
+            </summary>
+            <example>John Doe</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.RegisterAdminDto.TEID">
+            <summary>
+            TE ID of the admin user
+            </summary>
+            <example>TE12345</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.RegisterAdminDto.Email">
+            <summary>
+            Email address of the admin user
+            </summary>
+            <example>john.doe@example.com</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.RegisterAdminDto.Password">
+            <summary>
+            Optional password with flexible requirements
+            If not provided, a strong password will be generated
+            </summary>
+            <example>StrongP@ss123</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.RegisterAdminDto.PlantId">
+            <summary>
+            Plant ID where the admin user belongs
+            </summary>
+            <example>1</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.RegisterAdminDto.IsSuperAdmin">
+            <summary>
+            Flag to indicate if the user is a super admin
+            </summary>
+            <example>false</example>
+        </member>
+        <member name="T:TE_Project.DTOs.Auth.UserDto">
+            <summary>
+            Data transfer object for user profile information
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UserDto.Id">
+            <summary>
+            User identifier
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UserDto.Email">
+            <summary>
+            User's email address
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UserDto.FullName">
+            <summary>
+            User's full name
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UserDto.PlantId">
+            <summary>
+            Plant ID where the user belongs
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UserDto.PlantName">
+            <summary>
+            Name of the plant
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UserDto.IsSuperAdmin">
+            <summary>
+            Flag indicating if the user is a super admin
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UserDto.RequirePasswordChange">
+            <summary>
+            Flag indicating if the user needs to change their password
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UserDto.Roles">
+            <summary>
+            List of roles assigned to the user
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Export.ExportDto.Format">
+            <summary>
+            Format of the export: 1 for all submissions, 2 for submissions with grey cards
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Export.ExportDto.PlantId">
+            <summary>
+            Optional plant ID - if null and user is super admin, export all plants
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Plant.PlantDto.Id">
+            <summary>
+            Plant ID
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Plant.PlantDto.Name">
+            <summary>
+            Plant name
+            </summary>
+        </member>
+        <member name="T:TE_Project.DTOs.Submission.SubmissionDto">
+            <summary>
+            Data transfer object for creating a submission
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.FullName">
+            <summary>
+            Full name of the person
+            </summary>
+            <example>John Smith</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.TeId">
+            <summary>
+            TE ID of the person
+            </summary>
+            <example>TE123456</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.Cin">
+            <summary>
+            CIN number
+            </summary>
+            <example>AB123456</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.DateOfBirth">
+            <summary>
+            Date of birth
+            </summary>
+            <example>1990-01-01</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.PlantId">
+            <summary>
+            Plant ID
+            </summary>
+            <example>1</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.GreyCard">
+            <summary>
+            Grey card number (optional)
+            </summary>
+            <example>12345-A-67890</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.CinImage">
+            <summary>
+            CIN image file
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.PicImage">
+            <summary>
+            Personal photo image file
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.GreyCardImage">
+            <summary>
+            Grey card image file (optional)
+            </summary>
+        </member>
+        <member name="T:TE_Project.DTOs.Submission.SubmissionResponseDto">
+            <summary>
+            Data transfer object for submission response
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.Id">
+            <summary>
+            Submission ID
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.FullName">
+            <summary>
+            Full name of the person
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.TeId">
+            <summary>
+            TE ID of the person
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.Cin">
+            <summary>
+            CIN number
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.DateOfBirth">
+            <summary>
+            Date of birth
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.GreyCard">
+            <summary>
+            Grey card number (if available)
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.PlantId">
+            <summary>
+            Plant ID
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.PlantName">
+            <summary>
+            Plant name
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.CreatedAt">
+            <summary>
+            Date when the submission was created
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.Files">
+            <summary>
+            List of files associated with the submission
+            </summary>
+        </member>
+        <member name="T:TE_Project.DTOs.Submission.FileDto">
+            <summary>
+            Data transfer object for file information
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.FileDto.Id">
+            <summary>
+            File ID
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.FileDto.FileName">
+            <summary>
+            File name
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.FileDto.FileType">
+            <summary>
+            Type of file
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.FileDto.FileTypeDescription">
+            <summary>
+            File type as string description
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.FileDto.UploadedAt">
+            <summary>
+            Date when the file was uploaded
+            </summary>
+        </member>
+        <member name="M:TE_Project.DTOs.Submission.FileDto.FileTypeToString(TE_Project.Enums.FileType)">
+            <summary>
+            Converts a FileType enum value to a descriptive string
+            </summary>
+        </member>
+        <member name="T:TE_Project.Entities.User">
+            <summary>
+            Represents a user in the system
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.FullName">
+            <summary>
+            Full name of the user
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.PlantId">
+            <summary>
+            Plant ID where the user belongs
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.Plant">
+            <summary>
+            Navigation property for the associated plant
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.IsSuperAdmin">
+            <summary>
+            Flag indicating if the user is a super admin
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.TEID">
+            <summary>
+            TEID for plant admins
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.RequirePasswordChange">
+            <summary>
+            Flag to check if this is the first login
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.CreatedAt">
+            <summary>
+            Date when the user was created
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.UpdatedAt">
+            <summary>
+            Date when the user was last updated
+            </summary>
+        </member>
+        <member name="P:TE_Project.Entities.User.Roles">
+            <summary>
+            List of roles assigned to the user (not mapped to database)
+            </summary>
+        </member>
+        <member name="M:TE_Project.Extensions.ApplicationBuilderExtensions.UseCustomErrorHandling(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configures the application to use custom error handling
+            </summary>
+        </member>
+        <member name="M:TE_Project.Extensions.ApplicationBuilderExtensions.UseSecurityHeaders(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configures the application to use security headers
+            </summary>
+        </member>
+        <member name="M:TE_Project.Extensions.ApplicationBuilderExtensions.UseCustomSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configures the application to use Swagger with custom settings
+            </summary>
+        </member>
+        <member name="M:TE_Project.Helpers.JwtHelper.ValidateToken(System.String,System.String,System.String,System.String)">
+            <summary>
+            Validates a JWT token
+            </summary>
+            <param name="token">JWT token to validate</param>
+            <param name="key">Secret key used to sign the JWT token</param>
+            <param name="issuer">Token issuer</param>
+            <param name="audience">Token audience</param>
+            <returns>True if token is valid, otherwise false</returns>
+        </member>
+        <member name="M:TE_Project.Helpers.JwtHelper.GetUserIdFromToken(System.String)">
+            <summary>
+            Gets the user ID from a JWT token
+            </summary>
+            <param name="token">JWT token</param>
+            <returns>User ID or null if token is invalid</returns>
+        </member>
+        <member name="M:TE_Project.Helpers.JwtHelper.CreateClaims(TE_Project.Entities.User,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Creates claims for a JWT token
+            </summary>
+            <param name="user">User to create claims for</param>
+            <param name="roles">Roles assigned to the user</param>
+            <returns>List of claims</returns>
+        </member>
+        <member name="M:TE_Project.Helpers.JwtHelper.GetValidationParameters(System.String,System.String,System.String)">
+            <summary>
+            Gets token validation parameters
+            </summary>
+        </member>
+        <member name="T:TE_Project.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TE_Project.Migrations.FixTokenColumnSize">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.FixTokenColumnSize.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.FixTokenColumnSize.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.FixTokenColumnSize.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

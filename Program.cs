@@ -86,8 +86,21 @@ builder.Services.RegisterServices();
 // Configure HttpContextAccessor
 builder.Services.AddHttpContextAccessor();
 
-// Configure CORS
-builder.Services.ConfigureCors(builder.Configuration);
+// EXPLICIT CORS CONFIGURATION - Override the existing configuration to ensure Angular app is allowed
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:4200",  // Angular dev server
+                "http://localhost:5268",  // Backend server (for same-origin requests)
+                "https://localhost:7170"  // Backend HTTPS server
+             )
+             .AllowAnyHeader()
+             .AllowAnyMethod()
+             .AllowCredentials();
+    });
+});
 
 // Configure rate limiting
 builder.Services.ConfigureRateLimiting();
@@ -108,6 +121,23 @@ if (app.Environment.IsDevelopment())
         c.DisplayRequestDuration();
     });
     app.UseDeveloperExceptionPage();
+    
+    // Log all requests in development for debugging
+    app.Use(async (context, next) =>
+    {
+        var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+        logger.LogInformation($"Request: {context.Request.Method} {context.Request.Path} from {context.Connection.RemoteIpAddress}");
+        
+        // Log headers for CORS debugging
+        foreach (var header in context.Request.Headers)
+        {
+            logger.LogDebug($"Header: {header.Key}: {header.Value}");
+        }
+        
+        await next.Invoke();
+        
+        logger.LogInformation($"Response: {context.Response.StatusCode}");
+    });
 }
 else
 {
@@ -117,10 +147,13 @@ else
 
 // Add security headers
 app.UseMiddleware<SecurityHeadersMiddleware>();
+
+// Important: Move CORS middleware up before routing and authentication
+app.UseCors("AllowFrontend");
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseCors("AllowFrontend");
 app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
@@ -140,5 +173,9 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "An error occurred while seeding the database.");
     }
 }
+
+// Print startup message with CORS information
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+logger.LogInformation("API is running with CORS enabled for http://localhost:4200");
 
 app.Run();
