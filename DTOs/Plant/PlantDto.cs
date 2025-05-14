@@ -11,5 +11,10 @@ namespace TE_Project.DTOs.Plant
         /// Plant name
         /// </summary>
         public string Name { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// Plant description
+        /// </summary>
+        public string Description { get; set; } = string.Empty;
     }
 }

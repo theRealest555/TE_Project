@@ -37,12 +37,106 @@ namespace TE_Project.Services
             return MapToPlantDto(plant);
         }
 
+        public async Task<PlantDto> CreatePlantAsync(CreatePlantDto model)
+        {
+            // Validate input
+            if (string.IsNullOrWhiteSpace(model.Name))
+            {
+                throw new ArgumentException("Plant name is required");
+            }
+            
+            // Check if plant name already exists
+            var existingPlant = await _plantRepository.GetFirstOrDefaultAsync(p => p.Name == model.Name);
+            if (existingPlant != null)
+            {
+                throw new ArgumentException($"A plant with the name '{model.Name}' already exists");
+            }
+            
+            // Create new plant
+            var plant = new Plant
+            {
+                Name = model.Name,
+                Description = model.Description
+            };
+            
+            await _plantRepository.AddAsync(plant);
+            await _plantRepository.SaveChangesAsync();
+            
+            _logger.LogInformation("Created new plant {PlantId} with name {PlantName}", plant.Id, plant.Name);
+            
+            return MapToPlantDto(plant);
+        }
+
+        public async Task<(bool success, string message)> UpdatePlantAsync(int id, UpdatePlantDto model)
+        {
+            // Validate input
+            if (string.IsNullOrWhiteSpace(model.Name))
+            {
+                return (false, "Plant name is required");
+            }
+            
+            // Check if plant exists
+            var plant = await _plantRepository.GetByIdAsync(id, trackChanges: true);
+            if (plant == null)
+            {
+                _logger.LogWarning("Update plant failed: Plant ID {PlantId} not found", id);
+                return (false, "Plant not found");
+            }
+            
+            // Check if new name is already used by another plant
+            if (plant.Name != model.Name)
+            {
+                var existingPlant = await _plantRepository.GetFirstOrDefaultAsync(p => p.Name == model.Name);
+                if (existingPlant != null && existingPlant.Id != id)
+                {
+                    return (false, $"A plant with the name '{model.Name}' already exists");
+                }
+            }
+            
+            // Update plant
+            plant.Name = model.Name;
+            plant.Description = model.Description;
+            
+            await _plantRepository.SaveChangesAsync();
+            
+            _logger.LogInformation("Updated plant {PlantId} with name {PlantName}", plant.Id, plant.Name);
+            
+            return (true, "Plant updated successfully");
+        }
+
+        public async Task<(bool success, string message)> DeletePlantAsync(int id)
+        {
+            // Check if plant exists
+            var plant = await _plantRepository.GetByIdAsync(id, includeProperties: "Admins,Submissions", trackChanges: true);
+            if (plant == null)
+            {
+                _logger.LogWarning("Delete plant failed: Plant ID {PlantId} not found", id);
+                return (false, "Plant not found");
+            }
+            
+            // Check if plant has associated users or submissions
+            if ((plant.Admins != null && plant.Admins.Any()) || 
+                (plant.Submissions != null && plant.Submissions.Any()))
+            {
+                _logger.LogWarning("Cannot delete plant {PlantId} because it has associated users or submissions", id);
+                return (false, "Cannot delete plant with associated users or submissions");
+            }
+            
+            _plantRepository.Remove(plant);
+            await _plantRepository.SaveChangesAsync();
+            
+            _logger.LogInformation("Deleted plant {PlantId}", id);
+            
+            return (true, "Plant deleted successfully");
+        }
+
         private PlantDto MapToPlantDto(Plant plant)
         {
             return new PlantDto
             {
                 Id = plant.Id,
-                Name = plant.Name
+                Name = plant.Name,
+                Description = plant.Description
             };
         }
     }

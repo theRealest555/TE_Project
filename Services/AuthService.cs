@@ -7,6 +7,7 @@ using TE_Project.Entities;
 using TE_Project.Repositories.Interfaces;
 using TE_Project.Services.Interfaces;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Query;
 
 
 namespace TE_Project.Services
@@ -250,20 +251,125 @@ namespace TE_Project.Services
             return (true, "Admin deleted successfully");
         }
 
-        public async Task<IEnumerable<UserDto>> GetAllAdminsAsync()
+        public async Task<(bool success, string message)> UpdateAdminAsync(string userId, UpdateAdminDto model)
         {
-            var users = await _userManager.Users
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                _logger.LogWarning("Update admin failed: User ID {UserId} not found", userId);
+                return (false, "User not found");
+            }
+
+            // Update user properties
+            user.FullName = model.FullName;
+            
+            if(!string.IsNullOrEmpty(model.Email) && user.Email != model.Email)
+            {
+                // Check if email is already in use
+                var existingUser = await _userRepository.GetByEmailAsync(model.Email);
+                if (existingUser != null && existingUser.Id != userId)
+                {
+                    return (false, "Email is already in use by another user");
+                }
+                
+                user.Email = model.Email;
+                user.UserName = model.Email; // Username is the same as email in this application
+                user.NormalizedEmail = model.Email.ToUpper();
+                user.NormalizedUserName = model.Email.ToUpper();
+            }
+            
+            if (model.PlantId > 0 && user.PlantId != model.PlantId)
+            {
+                // Validate plant exists
+                var plant = await _plantRepository.GetByIdAsync(model.PlantId);
+                if (plant == null)
+                {
+                    return (false, "Plant not found");
+                }
+                
+                user.PlantId = model.PlantId;
+            }
+            
+            if (model.TEID != null)
+            {
+                user.TEID = model.TEID;
+            }
+            
+            if (model.IsSuperAdmin.HasValue && user.IsSuperAdmin != model.IsSuperAdmin.Value)
+            {
+                user.IsSuperAdmin = model.IsSuperAdmin.Value;
+                
+                // Update roles
+                var roles = await _userManager.GetRolesAsync(user);
+                
+                if (model.IsSuperAdmin.Value && !roles.Contains(AdminRole.SuperAdmin))
+                {
+                    // Remove regular admin role if exists
+                    if (roles.Contains(AdminRole.RegularAdmin))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, AdminRole.RegularAdmin);
+                    }
+                    
+                    // Add super admin role
+                    await _userManager.AddToRoleAsync(user, AdminRole.SuperAdmin);
+                }
+                else if (!model.IsSuperAdmin.Value && roles.Contains(AdminRole.SuperAdmin))
+                {
+                    // Remove super admin role
+                    await _userManager.RemoveFromRoleAsync(user, AdminRole.SuperAdmin);
+                    
+                    // Add regular admin role if not already assigned
+                    if (!roles.Contains(AdminRole.RegularAdmin))
+                    {
+                        await _userManager.AddToRoleAsync(user, AdminRole.RegularAdmin);
+                    }
+                }
+            }
+            
+            user.UpdatedAt = DateTime.UtcNow;
+            
+            var result = await _userManager.UpdateAsync(user);
+            
+            if (!result.Succeeded)
+            {
+                _logger.LogError("Failed to update admin user {UserId}: {Errors}", 
+                    userId, string.Join(", ", result.Errors));
+                return (false, string.Join(", ", result.Errors.Select(e => e.Description)));
+            }
+            
+            _logger.LogInformation("Admin user {UserId} updated successfully", userId);
+            return (true, "Admin updated successfully");
+        }
+
+        public async Task<IEnumerable<UserDto>> GetAllAdminsAsync(
+            string? email = null,
+            string? fullName = null,
+            int? plantId = null,
+            string? plantName = null,
+            bool? isSuperAdmin = null,
+            bool? requirePasswordChange = null)
+        {
+            var query = _userManager.Users
                 .AsNoTracking()
                 .Include(u => u.Plant)
+                .Where(u =>
+                    (string.IsNullOrEmpty(email) || (u.Email != null && u.Email.Contains(email))) &&
+                    (string.IsNullOrEmpty(fullName) || u.FullName.Contains(fullName)) &&
+                    (!plantId.HasValue || u.PlantId == plantId) &&
+                    (string.IsNullOrEmpty(plantName) || (u.Plant != null && u.Plant.Name != null && u.Plant.Name.Contains(plantName))) &&
+                    (!isSuperAdmin.HasValue || u.IsSuperAdmin == isSuperAdmin) &&
+                    (!requirePasswordChange.HasValue || u.RequirePasswordChange == requirePasswordChange));
+
+            var users = await query
                 .OrderBy(u => u.FullName)
                 .ToListAsync();
-            
+
             var result = new List<UserDto>();
-            
+
             foreach (var user in users)
             {
                 var roles = await _userManager.GetRolesAsync(user);
-                
+
                 result.Add(new UserDto
                 {
                     Id = user.Id,
@@ -276,9 +382,10 @@ namespace TE_Project.Services
                     Roles = roles.ToList()
                 });
             }
-            
+
             return result;
         }
+
 
         public async Task<IEnumerable<UserDto>> GetAdminsByPlantIdAsync(int plantId)
         {

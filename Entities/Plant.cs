@@ -10,6 +10,9 @@ namespace TE_Project.Entities
         [Required]
         [MaxLength(100)]
         public string Name { get; set; } = string.Empty;
+        
+        [MaxLength(500)]
+        public string Description { get; set; } = string.Empty;
 
         // Navigation properties
         public ICollection<User> Admins { get; set; } = new List<User>();

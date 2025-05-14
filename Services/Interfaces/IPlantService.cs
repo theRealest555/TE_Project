@@ -1,5 +1,4 @@
 using TE_Project.DTOs.Plant;
-using TE_Project.Entities;
 
 namespace TE_Project.Services.Interfaces
 {
@@ -7,5 +6,8 @@ namespace TE_Project.Services.Interfaces
     {
         Task<IEnumerable<PlantDto>> GetAllPlantsAsync();
         Task<PlantDto?> GetPlantByIdAsync(int id);
+        Task<PlantDto> CreatePlantAsync(CreatePlantDto model);
+        Task<(bool success, string message)> UpdatePlantAsync(int id, UpdatePlantDto model);
+        Task<(bool success, string message)> DeletePlantAsync(int id);
     }
 }

@@ -13,7 +13,14 @@ namespace TE_Project.Services.Interfaces
         Task<bool> ValidateAdminAccessToPlantAsync(string userId, int plantId);
         Task<(bool success, string message, string newPassword)> ResetPasswordAsync(string userId);
         Task<(bool success, string message)> DeleteAdminAsync(string userId);
-        Task<IEnumerable<UserDto>> GetAllAdminsAsync();
+        Task<(bool success, string message)> UpdateAdminAsync(string userId, UpdateAdminDto model);
+        Task<IEnumerable<UserDto>> GetAllAdminsAsync(
+            string? email = null, 
+            string? fullName = null, 
+            int? plantId = null,
+            string? plantName = null,
+            bool? isSuperAdmin = null,
+            bool? requirePasswordChange = null);
         Task<IEnumerable<UserDto>> GetAdminsByPlantIdAsync(int plantId);
     }
 }

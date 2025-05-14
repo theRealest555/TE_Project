@@ -79,29 +79,6 @@ namespace TE_Project.Controllers
         }
 
         /// <summary>
-        /// Logs out the user from all devices by revoking all their active tokens
-        /// </summary>
-        /// <returns>Success message</returns>
-        /// <response code="200">If the logout from all devices was successful</response>
-        /// <response code="401">If the user is not authenticated</response>
-        [HttpPost("logout-all")]
-        [Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> LogoutAllDevices()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
-            {
-                return Unauthorized(new { message = "User not authenticated" });
-            }
-
-            await _tokenService.RevokeAllUserTokensAsync(userId);
-
-            return Ok(new { message = "Logged out from all devices" });
-        }
-
-        /// <summary>
         /// Registers a new admin user
         /// </summary>
         /// <param name="model">Admin registration details</param>
@@ -201,34 +178,6 @@ namespace TE_Project.Controllers
             {
                 return NotFound(new { message = "User not found" });
             }
-        }
-
-        /// <summary>
-        /// Gets all active sessions (tokens) for the current user
-        /// </summary>
-        /// <returns>List of active sessions</returns>
-        /// <response code="200">Returns list of active sessions</response>
-        /// <response code="401">If the user is not authenticated</response>
-        [HttpGet("sessions")]
-        [Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> GetActiveSessions()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized(new { message = "User identity not found" });
-
-            var activeSessions = await _tokenService.GetActiveUserTokensAsync(userId);
-            
-            return Ok(activeSessions.Select(s => new
-            {
-                s.Id,
-                s.DeviceInfo,
-                s.IpAddress,
-                s.CreatedAt,
-                s.ExpiresAt
-            }));
         }
     }
 }

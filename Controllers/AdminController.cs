@@ -28,7 +28,7 @@ namespace TE_Project.Controllers
         }
 
         /// <summary>
-        /// Gets all admin users (Super Admin only)
+        /// Gets all admin users with optional filtering (Super Admin only)
         /// </summary>
         /// <returns>List of admin users</returns>
         /// <response code="200">Returns the list of admin users</response>
@@ -38,11 +38,18 @@ namespace TE_Project.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetAllAdmins()
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetAllAdmins(
+            [FromQuery] string? email = null,
+            [FromQuery] string? fullName = null, 
+            [FromQuery] int? plantId = null,
+            [FromQuery] string? plantName = null,
+            [FromQuery] bool? isSuperAdmin = null,
+            [FromQuery] bool? requirePasswordChange = null)
         {
             try
             {
-                var adminUsers = await _authService.GetAllAdminsAsync();
+                var adminUsers = await _authService.GetAllAdminsAsync(
+                    email, fullName, plantId, plantName, isSuperAdmin, requirePasswordChange);
                 return Ok(adminUsers);
             }
             catch (Exception ex)
@@ -74,6 +81,41 @@ namespace TE_Project.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving admin users for plant {PlantId}", plantId);
+                throw; // Let middleware handle this
+            }
+        }
+
+        /// <summary>
+        /// Updates an admin user's information (Super Admin only)
+        /// </summary>
+        /// <param name="userId">User ID to update</param>
+        /// <param name="model">Updated admin information</param>
+        /// <returns>Success message</returns>
+        [HttpPut("users/{userId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateAdmin(string userId, [FromBody] UpdateAdminDto model)
+        {
+            try
+            {
+                var (success, message) = await _authService.UpdateAdminAsync(userId, model);
+                
+                if (!success)
+                {
+                    if (message == "User not found")
+                        return NotFound(new { message });
+                        
+                    return BadRequest(new { message });
+                }
+                
+                return Ok(new { message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating admin user {UserId}", userId);
                 throw; // Let middleware handle this
             }
         }

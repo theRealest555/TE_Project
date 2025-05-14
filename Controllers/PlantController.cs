@@ -62,5 +62,103 @@ namespace TE_Project.Controllers
                 
             return Ok(plant);
         }
+
+        /// <summary>
+        /// Creates a new plant (Super Admin only)
+        /// </summary>
+        /// <param name="model">Plant details</param>
+        /// <returns>Newly created plant</returns>
+        [HttpPost]
+        [Authorize(Roles = AdminRole.SuperAdmin)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<ActionResult<PlantDto>> Create([FromBody] CreatePlantDto model)
+        {
+            try
+            {
+                var plant = await _plantService.CreatePlantAsync(model);
+                return CreatedAtAction(nameof(GetById), new { id = plant.Id }, plant);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating plant");
+                throw; // Let middleware handle this
+            }
+        }
+
+        /// <summary>
+        /// Updates a plant (Super Admin only)
+        /// </summary>
+        /// <param name="id">Plant ID</param>
+        /// <param name="model">Updated plant details</param>
+        /// <returns>Success message</returns>
+        [HttpPut("{id}")]
+        [Authorize(Roles = AdminRole.SuperAdmin)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdatePlantDto model)
+        {
+            try
+            {
+                var (success, message) = await _plantService.UpdatePlantAsync(id, model);
+                
+                if (!success)
+                {
+                    if (message == "Plant not found")
+                        return NotFound(new { message });
+                        
+                    return BadRequest(new { message });
+                }
+                
+                return Ok(new { message = "Plant updated successfully" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating plant {PlantId}", id);
+                throw; // Let middleware handle this
+            }
+        }
+
+        /// <summary>
+        /// Deletes a plant (Super Admin only)
+        /// </summary>
+        /// <param name="id">Plant ID</param>
+        /// <returns>Success message</returns>
+        [HttpDelete("{id}")]
+        [Authorize(Roles = AdminRole.SuperAdmin)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var (success, message) = await _plantService.DeletePlantAsync(id);
+                
+                if (!success)
+                {
+                    if (message == "Plant not found")
+                        return NotFound(new { message });
+                    
+                    if (message == "Cannot delete plant with associated users or submissions")
+                        return BadRequest(new { message });
+                        
+                    return BadRequest(new { message });
+                }
+                
+                return Ok(new { message = "Plant deleted successfully" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting plant {PlantId}", id);
+                throw; // Let middleware handle this
+            }
+        }
     }
 }
