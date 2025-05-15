@@ -139,9 +139,15 @@ namespace TE_Project.Services
             var content = stream.ToArray();
 
             // Create file name with plant information
-            string plantInfo = plantId.HasValue 
-                ? (!string.IsNullOrEmpty(plantName) ? $"_{plantName}" : $"_Plant{plantId}")
-                : "_AllPlants";
+            string plantInfo;
+            if (plantId.HasValue)
+            {
+                plantInfo = !string.IsNullOrEmpty(plantName) ? $"_{plantName}" : $"_Plant{plantId}";
+            }
+            else
+            {
+                plantInfo = "_AllPlants";
+            }
                 
             // Sanitize the plant name for file naming
             if (plantInfo != "_AllPlants")
@@ -213,9 +219,15 @@ namespace TE_Project.Services
             var content = stream.ToArray();
 
             // Create file name with plant information
-            string plantInfo = plantId.HasValue 
-                ? (!string.IsNullOrEmpty(plantName) ? $"_{plantName}" : $"_Plant{plantId}")
-                : "_AllPlants";
+            string plantInfo;
+            if (plantId.HasValue)
+            {
+                plantInfo = !string.IsNullOrEmpty(plantName) ? $"_{plantName}" : $"_Plant{plantId}";
+            }
+            else
+            {
+                plantInfo = "_AllPlants";
+            }
                 
             // Sanitize the plant name for file naming
             if (plantInfo != "_AllPlants")
