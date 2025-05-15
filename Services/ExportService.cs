@@ -17,13 +17,16 @@ namespace TE_Project.Services
     public class ExportService : IExportService
     {
         private readonly ISubmissionRepository _submissionRepository;
+        private readonly IPlantRepository _plantRepository;
         private readonly ILogger<ExportService> _logger;
 
         public ExportService(
             ISubmissionRepository submissionRepository,
+            IPlantRepository plantRepository,
             ILogger<ExportService> logger)
         {
             _submissionRepository = submissionRepository ?? throw new ArgumentNullException(nameof(submissionRepository));
+            _plantRepository = plantRepository ?? throw new ArgumentNullException(nameof(plantRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
@@ -41,8 +44,17 @@ namespace TE_Project.Services
 
                 // Fetch submissions based on plant ID
                 IEnumerable<Submission> submissions;
+                string? plantName = null;
+                
                 if (plantId.HasValue)
                 {
+                    // Get the plant name for the filename
+                    var plant = await _plantRepository.GetByIdAsync(plantId.Value);
+                    if (plant != null)
+                    {
+                        plantName = plant.Name;
+                    }
+                    
                     submissions = await _submissionRepository.GetWithFilesByPlantIdAsync(plantId.Value);
                 }
                 else if (isSuperAdmin)
@@ -59,8 +71,8 @@ namespace TE_Project.Services
 
                 return exportDto.Format switch
                 {
-                    1 => GenerateFormat1Report(submissions.ToList()),
-                    2 => GenerateFormat2Report(submissions.ToList()),
+                    1 => GenerateFormat1Report(submissions.ToList(), plantId, plantName),
+                    2 => GenerateFormat2Report(submissions.ToList(), plantId, plantName),
                     _ => throw new ArgumentException("Invalid report format")
                 };
             }
@@ -71,7 +83,7 @@ namespace TE_Project.Services
             }
         }
 
-        private FileContentResult GenerateFormat1Report(List<Submission> submissions)
+        private FileContentResult GenerateFormat1Report(List<Submission> submissions, int? plantId = null, string? plantName = null)
         {
             using var workbook = new XLWorkbook();
             
@@ -94,16 +106,15 @@ namespace TE_Project.Services
             {
                 var worksheet = workbook.Worksheets.Add($"Report_{sheetNumber}");
                 
-                // Headers
-                worksheet.Cell(1, 1).Value = "Last Name";
-                worksheet.Cell(1, 2).Value = "First Name";
+                // Headers - Updated according to Image 2
+                worksheet.Cell(1, 1).Value = "Last name";
+                worksheet.Cell(1, 2).Value = "First name";
                 worksheet.Cell(1, 3).Value = "Gender";
                 worksheet.Cell(1, 4).Value = "National ID";
-                worksheet.Cell(1, 5).Value = "Date of Birth";
-                worksheet.Cell(1, 6).Value = "Plant";
+                worksheet.Cell(1, 5).Value = "Date of birth";
 
                 // Make headers bold
-                worksheet.Range(1, 1, 1, 6).Style.Font.Bold = true;
+                worksheet.Range(1, 1, 1, 5).Style.Font.Bold = true;
 
                 // Data rows
                 for (int i = 0; i < batch.Count; i++)
@@ -113,7 +124,6 @@ namespace TE_Project.Services
                     worksheet.Cell(i + 2, 3).Value = batch[i].Gender.ToString();
                     worksheet.Cell(i + 2, 4).Value = batch[i].Cin;
                     worksheet.Cell(i + 2, 5).Value = batch[i].DateOfBirth.ToString("yyyy-MM-dd");
-                    worksheet.Cell(i + 2, 6).Value = batch[i].Plant?.Name ?? $"Plant {batch[i].PlantId}";
                 }
 
                 // Auto-fit columns
@@ -128,13 +138,27 @@ namespace TE_Project.Services
             stream.Position = 0;
             var content = stream.ToArray();
 
+            // Create file name with plant information
+            string plantInfo = plantId.HasValue 
+                ? (!string.IsNullOrEmpty(plantName) ? $"_{plantName}" : $"_Plant{plantId}")
+                : "_AllPlants";
+                
+            // Sanitize the plant name for file naming
+            if (plantInfo != "_AllPlants")
+            {
+                plantInfo = plantInfo.Replace(" ", "_").Replace("/", "_").Replace("\\", "_")
+                                  .Replace(":", "_").Replace("*", "_").Replace("?", "_")
+                                  .Replace("\"", "_").Replace("<", "_").Replace(">", "_")
+                                  .Replace("|", "_");
+            }
+
             return new FileContentResult(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
             {
-                FileDownloadName = $"Report_Format1_{DateTime.Now:yyyyMMdd}.xlsx"
+                FileDownloadName = $"Report_Format1{plantInfo}_{DateTime.Now:yyyyMMdd}.xlsx"
             };
         }
 
-        private FileContentResult GenerateFormat2Report(List<Submission> submissions)
+        private FileContentResult GenerateFormat2Report(List<Submission> submissions, int? plantId = null, string? plantName = null)
         {
             using var workbook = new XLWorkbook();
             
@@ -162,20 +186,18 @@ namespace TE_Project.Services
             {
                 var worksheet = workbook.Worksheets.Add($"Report_{sheetNumber}");
                 
-                // Headers
+                // Headers - Updated according to Image 1
                 worksheet.Cell(1, 1).Value = "National ID";
-                worksheet.Cell(1, 2).Value = "Registration Number";
-                worksheet.Cell(1, 3).Value = "Plant";
+                worksheet.Cell(1, 2).Value = "Registration number";
 
                 // Make headers bold
-                worksheet.Range(1, 1, 1, 3).Style.Font.Bold = true;
+                worksheet.Range(1, 1, 1, 2).Style.Font.Bold = true;
 
                 // Data rows
                 for (int i = 0; i < batch.Count; i++)
                 {
                     worksheet.Cell(i + 2, 1).Value = batch[i].Cin;
                     worksheet.Cell(i + 2, 2).Value = batch[i].GreyCard;
-                    worksheet.Cell(i + 2, 3).Value = batch[i].Plant?.Name ?? $"Plant {batch[i].PlantId}";
                 }
 
                 // Auto-fit columns
@@ -190,9 +212,23 @@ namespace TE_Project.Services
             stream.Position = 0;
             var content = stream.ToArray();
 
+            // Create file name with plant information
+            string plantInfo = plantId.HasValue 
+                ? (!string.IsNullOrEmpty(plantName) ? $"_{plantName}" : $"_Plant{plantId}")
+                : "_AllPlants";
+                
+            // Sanitize the plant name for file naming
+            if (plantInfo != "_AllPlants")
+            {
+                plantInfo = plantInfo.Replace(" ", "_").Replace("/", "_").Replace("\\", "_")
+                                  .Replace(":", "_").Replace("*", "_").Replace("?", "_")
+                                  .Replace("\"", "_").Replace("<", "_").Replace(">", "_")
+                                  .Replace("|", "_");
+            }
+
             return new FileContentResult(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
             {
-                FileDownloadName = $"Report_Format2_{DateTime.Now:yyyyMMdd}.xlsx"
+                FileDownloadName = $"Report_Format2{plantInfo}_{DateTime.Now:yyyyMMdd}.xlsx"
             };
         }
     }
