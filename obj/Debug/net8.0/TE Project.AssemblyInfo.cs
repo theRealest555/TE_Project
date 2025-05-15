@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TE Project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73465302eb918cc609bc540b0d3e0d3defa3b32f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2fa1c9bcc736f96ebe033fc42e7599332c30ae3")]
 [assembly: System.Reflection.AssemblyProductAttribute("TE Project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TE Project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
