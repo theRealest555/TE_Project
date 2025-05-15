@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
+using TE_Project.Enums;
 
 namespace TE_Project.DTOs.Submission
 {
@@ -9,12 +10,27 @@ namespace TE_Project.DTOs.Submission
     public class SubmissionDto
     {
         /// <summary>
-        /// Full name of the person
+        /// First name of the person
         /// </summary>
-        /// <example>John Smith</example>
+        /// <example>John</example>
         [Required]
-        [MaxLength(100)]
-        public string FullName { get; set; } = string.Empty;
+        [MaxLength(50)]
+        public string FirstName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Last name of the person
+        /// </summary>
+        /// <example>Smith</example>
+        [Required]
+        [MaxLength(50)]
+        public string LastName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gender of the person
+        /// </summary>
+        /// <example>Male</example>
+        [Required]
+        public GenderType Gender { get; set; }
 
         /// <summary>
         /// TE ID of the person

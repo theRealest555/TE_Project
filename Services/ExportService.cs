@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ClosedXML.Excel;
 using TE_Project.DTOs.Export;
 using TE_Project.Entities;
+using TE_Project.Enums;
 using TE_Project.Repositories.Interfaces;
 using TE_Project.Services.Interfaces;
 
@@ -53,6 +54,9 @@ namespace TE_Project.Services
                     throw new UnauthorizedAccessException("Access denied to export data");
                 }
 
+                // Order by creation date (oldest first)
+                submissions = submissions.OrderBy(s => s.CreatedAt).ToList();
+
                 return exportDto.Format switch
                 {
                     1 => GenerateFormat1Report(submissions.ToList()),
@@ -70,30 +74,53 @@ namespace TE_Project.Services
         private FileContentResult GenerateFormat1Report(List<Submission> submissions)
         {
             using var workbook = new XLWorkbook();
-            var worksheet = workbook.Worksheets.Add("Report");
-
-            // Headers
-            worksheet.Cell(1, 1).Value = "Name";
-            worksheet.Cell(1, 2).Value = "CIN";
-            worksheet.Cell(1, 3).Value = "TE ID";
-            worksheet.Cell(1, 4).Value = "Date of Birth";
-            worksheet.Cell(1, 5).Value = "Plant";
-
-            // Make headers bold
-            worksheet.Range(1, 1, 1, 5).Style.Font.Bold = true;
-
-            // Data rows
-            for (int i = 0; i < submissions.Count; i++)
+            
+            // Group submissions into batches of 100
+            var batchedSubmissions = submissions
+                .Select((s, index) => new { Submission = s, Index = index })
+                .GroupBy(x => x.Index / 100)
+                .Select(g => g.Select(x => x.Submission).ToList())
+                .ToList();
+            
+            // Create at least one sheet even if there are no submissions
+            if (batchedSubmissions.Count == 0)
             {
-                worksheet.Cell(i + 2, 1).Value = submissions[i].FullName;
-                worksheet.Cell(i + 2, 2).Value = submissions[i].Cin;
-                worksheet.Cell(i + 2, 3).Value = submissions[i].TeId;
-                worksheet.Cell(i + 2, 4).Value = submissions[i].DateOfBirth.ToString("yyyy-MM-dd");
-                worksheet.Cell(i + 2, 5).Value = submissions[i].Plant?.Name ?? $"Plant {submissions[i].PlantId}";
+                batchedSubmissions.Add(new List<Submission>());
             }
+            
+            int sheetNumber = 1;
+            
+            foreach (var batch in batchedSubmissions)
+            {
+                var worksheet = workbook.Worksheets.Add($"Report_{sheetNumber}");
+                
+                // Headers
+                worksheet.Cell(1, 1).Value = "Last Name";
+                worksheet.Cell(1, 2).Value = "First Name";
+                worksheet.Cell(1, 3).Value = "Gender";
+                worksheet.Cell(1, 4).Value = "National ID";
+                worksheet.Cell(1, 5).Value = "Date of Birth";
+                worksheet.Cell(1, 6).Value = "Plant";
 
-            // Auto-fit columns
-            worksheet.Columns().AdjustToContents();
+                // Make headers bold
+                worksheet.Range(1, 1, 1, 6).Style.Font.Bold = true;
+
+                // Data rows
+                for (int i = 0; i < batch.Count; i++)
+                {
+                    worksheet.Cell(i + 2, 1).Value = batch[i].LastName;
+                    worksheet.Cell(i + 2, 2).Value = batch[i].FirstName;
+                    worksheet.Cell(i + 2, 3).Value = batch[i].Gender.ToString();
+                    worksheet.Cell(i + 2, 4).Value = batch[i].Cin;
+                    worksheet.Cell(i + 2, 5).Value = batch[i].DateOfBirth.ToString("yyyy-MM-dd");
+                    worksheet.Cell(i + 2, 6).Value = batch[i].Plant?.Name ?? $"Plant {batch[i].PlantId}";
+                }
+
+                // Auto-fit columns
+                worksheet.Columns().AdjustToContents();
+                
+                sheetNumber++;
+            }
 
             // Convert to bytes
             using var stream = new MemoryStream();
@@ -110,33 +137,52 @@ namespace TE_Project.Services
         private FileContentResult GenerateFormat2Report(List<Submission> submissions)
         {
             using var workbook = new XLWorkbook();
-            var worksheet = workbook.Worksheets.Add("Report");
-
-            // Headers
-            worksheet.Cell(1, 1).Value = "Name";
-            worksheet.Cell(1, 2).Value = "Vehicle Registration Number";
-            worksheet.Cell(1, 3).Value = "TE ID";
-            worksheet.Cell(1, 4).Value = "Plant";
-
-            // Make headers bold
-            worksheet.Range(1, 1, 1, 4).Style.Font.Bold = true;
-
-            // Data rows
-            int row = 2;
-            foreach (var submission in submissions)
+            
+            // Filter submissions with grey card
+            var submissionsWithGreyCard = submissions
+                .Where(s => !string.IsNullOrEmpty(s.GreyCard))
+                .ToList();
+            
+            // Group submissions into batches of 100
+            var batchedSubmissions = submissionsWithGreyCard
+                .Select((s, index) => new { Submission = s, Index = index })
+                .GroupBy(x => x.Index / 100)
+                .Select(g => g.Select(x => x.Submission).ToList())
+                .ToList();
+            
+            // Create at least one sheet even if there are no submissions
+            if (batchedSubmissions.Count == 0)
             {
-                if (!string.IsNullOrEmpty(submission.GreyCard))
-                {
-                    worksheet.Cell(row, 1).Value = submission.FullName;
-                    worksheet.Cell(row, 2).Value = submission.GreyCard;
-                    worksheet.Cell(row, 3).Value = submission.TeId;
-                    worksheet.Cell(row, 4).Value = submission.Plant?.Name ?? $"Plant {submission.PlantId}";
-                    row++;
-                }
+                batchedSubmissions.Add(new List<Submission>());
             }
+            
+            int sheetNumber = 1;
+            
+            foreach (var batch in batchedSubmissions)
+            {
+                var worksheet = workbook.Worksheets.Add($"Report_{sheetNumber}");
+                
+                // Headers
+                worksheet.Cell(1, 1).Value = "National ID";
+                worksheet.Cell(1, 2).Value = "Registration Number";
+                worksheet.Cell(1, 3).Value = "Plant";
 
-            // Auto-fit columns
-            worksheet.Columns().AdjustToContents();
+                // Make headers bold
+                worksheet.Range(1, 1, 1, 3).Style.Font.Bold = true;
+
+                // Data rows
+                for (int i = 0; i < batch.Count; i++)
+                {
+                    worksheet.Cell(i + 2, 1).Value = batch[i].Cin;
+                    worksheet.Cell(i + 2, 2).Value = batch[i].GreyCard;
+                    worksheet.Cell(i + 2, 3).Value = batch[i].Plant?.Name ?? $"Plant {batch[i].PlantId}";
+                }
+
+                // Auto-fit columns
+                worksheet.Columns().AdjustToContents();
+                
+                sheetNumber++;
+            }
 
             // Convert to bytes
             using var stream = new MemoryStream();

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TE_Project.Enums;
 
 namespace TE_Project.Entities
 {
@@ -8,8 +9,16 @@ namespace TE_Project.Entities
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string FullName { get; set; } = string.Empty;
+        [MaxLength(50)]
+        public string FirstName { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(50)]
+        public string LastName { get; set; } = string.Empty;
+
+        [Required]
+        public GenderType Gender { get; set; }
+
 
         [Required]
         [MaxLength(50)]

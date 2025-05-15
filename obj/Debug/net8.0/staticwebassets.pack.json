@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\uploads\\1\\cin\\1\\AB123456_7cc73ae9ac3c415e8e21ebed0d5741dd.jpg"
     },
     {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\cin\\1\\CD2323232.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1\\cin\\1\\CD2323232.jpg"
+    },
+    {
       "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\grey_card\\1\\12345-A-67890.jpg",
       "PackagePath": "staticwebassets\\uploads\\1\\grey_card\\1\\12345-A-67890.jpg"
     },
@@ -17,12 +21,20 @@
       "PackagePath": "staticwebassets\\uploads\\1\\grey_card\\1\\12345-A-67890_de9e4940abf24db5be21493e51c7eb92.jpg"
     },
     {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\grey_card\\1\\213-H-12.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1\\grey_card\\1\\213-H-12.jpg"
+    },
+    {
       "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\pic\\1\\AB123456_i.png",
       "PackagePath": "staticwebassets\\uploads\\1\\pic\\1\\AB123456_i.png"
     },
     {
       "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\pic\\1\\AB123456_i_ffd37d04001645e1b1874b250789cf04.png",
       "PackagePath": "staticwebassets\\uploads\\1\\pic\\1\\AB123456_i_ffd37d04001645e1b1874b250789cf04.png"
+    },
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\pic\\1\\CD2323232_i.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1\\pic\\1\\CD2323232_i.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TE Project.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

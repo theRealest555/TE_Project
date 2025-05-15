@@ -9,7 +9,8 @@ namespace TE_Project.Helpers
     public static class FileValidationHelper
     {
         private static readonly string[] AllowedExtensions = { ".jpg", ".jpeg", ".png" };
-        private const int MaxFileSizeInMb = 5;
+        // Changed from 5MB to 1MB as per requirement
+        private const int MaxFileSizeInMb = 1;
         private const int MaxFileSizeInBytes = MaxFileSizeInMb * 1024 * 1024;
 
         public static bool IsValidImage(IFormFile file)

@@ -35,16 +35,25 @@ namespace TE_Project.Services
                 throw new ArgumentException("Invalid plant");
             }
 
+            // Check if a submission with the same CIN already exists
+            var existingSubmission = await _submissionRepository.GetFirstOrDefaultAsync(s => s.Cin == model.Cin);
+            if (existingSubmission != null)
+            {
+                throw new ArgumentException("A submission with this CIN already exists");
+            }
+
             // Validate files
             if (!ValidateFiles(model))
             {
-                throw new ArgumentException("Invalid file(s). Files must be images (jpg, jpeg, png) and less than 5MB.");
+                throw new ArgumentException("Invalid file(s). Files must be images (jpg, jpeg, png) and less than 1MB.");
             }
 
             // Create the submission
             var submission = new Submission
             {
-                FullName = model.FullName,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Gender = model.Gender,
                 TeId = model.TeId,
                 Cin = model.Cin,
                 DateOfBirth = model.DateOfBirth,
@@ -111,6 +120,18 @@ namespace TE_Project.Services
             }
         }
 
+        public async Task<SubmissionResponseDto?> GetSubmissionByCinAsync(string cin)
+        {
+            var submission = await _submissionRepository.GetFirstOrDefaultAsync(
+                s => s.Cin == cin,
+                includeProperties: "Plant,Files");
+            
+            if (submission == null)
+                return null;
+
+            return MapToSubmissionResponseDto(submission);
+        }
+
         public async Task<SubmissionResponseDto?> GetSubmissionByIdAsync(int id)
         {
             var submission = await _submissionRepository.GetWithFilesAsync(id);
@@ -141,7 +162,9 @@ namespace TE_Project.Services
             return new SubmissionResponseDto
             {
                 Id = submission.Id,
-                FullName = submission.FullName,
+                FirstName = submission.FirstName,
+                LastName = submission.LastName,
+                Gender = submission.Gender,
                 TeId = submission.TeId,
                 Cin = submission.Cin,
                 DateOfBirth = submission.DateOfBirth,
@@ -162,15 +185,16 @@ namespace TE_Project.Services
         private static bool ValidateFiles(SubmissionDto model)
         {
             // Check CIN image
-            if (model.CinImage == null || model.CinImage.Length == 0)
+            if (model.CinImage == null || model.CinImage.Length == 0 || model.CinImage.Length > 1024 * 1024) // 1MB
                 return false;
 
             // Check PIC image
-            if (model.PicImage == null || model.PicImage.Length == 0)
+            if (model.PicImage == null || model.PicImage.Length == 0 || model.PicImage.Length > 1024 * 1024) // 1MB
                 return false;
 
             // Check Grey Card image if Grey Card number is provided
-            if (!string.IsNullOrEmpty(model.GreyCard) && (model.GreyCardImage == null || model.GreyCardImage.Length == 0))
+            if (!string.IsNullOrEmpty(model.GreyCard) && 
+                (model.GreyCardImage == null || model.GreyCardImage.Length == 0 || model.GreyCardImage.Length > 1024 * 1024)) // 1MB
                 return false;
 
             return true;

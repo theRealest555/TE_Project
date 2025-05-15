@@ -4,6 +4,7 @@ using System.Security.Claims;
 using TE_Project.DTOs.Submission;
 using TE_Project.Entities;
 using TE_Project.Services.Interfaces;
+using TE_Project.Enums;
 
 namespace TE_Project.Controllers
 {
@@ -12,7 +13,7 @@ namespace TE_Project.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    // Removed [Authorize] from here
+    // Submissions endpoint is public
     [Produces("application/json")]
     public class SubmissionsController : ControllerBase
     {
@@ -40,13 +41,32 @@ namespace TE_Project.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        // Removed [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        // Removed [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> Create([FromForm] SubmissionDto model)
         {
-            // Removed user validation logic since submissions are now public
             try
             {
+                // Validate fields before processing
+                if (string.IsNullOrWhiteSpace(model.FirstName) || string.IsNullOrWhiteSpace(model.LastName))
+                {
+                    return BadRequest(new { message = "First name and last name are required." });
+                }
+
+                // Gender is now an enum so no need to validate it for null/empty
+                
+                // Check for duplicate CIN submissions
+                var existingSubmission = await _submissionService.GetSubmissionByCinAsync(model.Cin);
+                if (existingSubmission != null)
+                {
+                    return BadRequest(new { message = "A submission with this CIN already exists." });
+                }
+
+                // Check file sizes (should be less than 1MB)
+                if (model.CinImage?.Length > 1024 * 1024 || model.PicImage?.Length > 1024 * 1024 ||
+                    (model.GreyCardImage != null && model.GreyCardImage.Length > 1024 * 1024))
+                {
+                    return BadRequest(new { message = "File size must be less than 1MB." });
+                }
+
                 var submission = await _submissionService.CreateSubmissionAsync(model);
                 
                 return CreatedAtAction(

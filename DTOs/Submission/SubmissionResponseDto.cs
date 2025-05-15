@@ -13,9 +13,19 @@ namespace TE_Project.DTOs.Submission
         public int Id { get; set; }
         
         /// <summary>
-        /// Full name of the person
+        /// First name of the person
         /// </summary>
-        public string FullName { get; set; } = string.Empty;
+        public string FirstName { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// Last name of the person
+        /// </summary>
+        public string LastName { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// Gender of the person
+        /// </summary>
+        public GenderType Gender { get; set; }
         
         /// <summary>
         /// TE ID of the person

@@ -1,16 +1,25 @@
 using FluentValidation;
 using TE_Project.DTOs.Submission;
 using TE_Project.Helpers;
+using TE_Project.Repositories.Interfaces;
+using TE_Project.Enums;
 
 namespace TE_Project.Validators.Submission
 {
     public class SubmissionDtoValidator : AbstractValidator<SubmissionDto>
     {
-        public SubmissionDtoValidator()
+        public SubmissionDtoValidator(ISubmissionRepository submissionRepository)
         {
-            RuleFor(x => x.FullName)
-                .NotEmpty().WithMessage("Full name is required")
-                .MaximumLength(100).WithMessage("Full name cannot exceed 100 characters");
+            RuleFor(x => x.FirstName)
+                .NotEmpty().WithMessage("First name is required")
+                .MaximumLength(50).WithMessage("First name cannot exceed 50 characters");
+
+            RuleFor(x => x.LastName)
+                .NotEmpty().WithMessage("Last name is required")
+                .MaximumLength(50).WithMessage("Last name cannot exceed 50 characters");
+
+            RuleFor(x => x.Gender)
+                .IsInEnum().WithMessage("Gender must be either Male or Female");
 
             RuleFor(x => x.TeId)
                 .NotEmpty().WithMessage("TE ID is required")
@@ -19,7 +28,10 @@ namespace TE_Project.Validators.Submission
             RuleFor(x => x.Cin)
                 .NotEmpty().WithMessage("CIN is required")
                 .MaximumLength(50).WithMessage("CIN cannot exceed 50 characters")
-                .Matches(RegexPatterns.CinPattern).WithMessage("CIN format is invalid");
+                .Matches(RegexPatterns.CinPattern).WithMessage("CIN format is invalid")
+                .MustAsync(async (cin, cancellation) => 
+                    !await submissionRepository.ExistsAsync(s => s.Cin == cin)
+                ).WithMessage("A submission with this CIN already exists");
 
             RuleFor(x => x.DateOfBirth)
                 .NotEmpty().WithMessage("Date of birth is required")
@@ -33,14 +45,20 @@ namespace TE_Project.Validators.Submission
                 .WithMessage("Grey card number format is invalid");
 
             RuleFor(x => x.CinImage)
-                .NotNull().WithMessage("CIN image is required");
+                .NotNull().WithMessage("CIN image is required")
+                .Must(image => image == null || image.Length <= 1024 * 1024) // 1MB max
+                .WithMessage("CIN image size must be less than 1MB");
 
             RuleFor(x => x.PicImage)
-                .NotNull().WithMessage("Personal photo is required");
+                .NotNull().WithMessage("Personal photo is required")
+                .Must(image => image == null || image.Length <= 1024 * 1024) // 1MB max
+                .WithMessage("Personal photo size must be less than 1MB");
 
             RuleFor(x => x.GreyCardImage)
                 .NotNull().WithMessage("Grey card image is required")
-                .When(x => !string.IsNullOrEmpty(x.GreyCard));
+                .When(x => !string.IsNullOrEmpty(x.GreyCard))
+                .Must(image => image == null || image.Length <= 1024 * 1024) // 1MB max
+                .WithMessage("Grey card image size must be less than 1MB");
         }
     }
 }
