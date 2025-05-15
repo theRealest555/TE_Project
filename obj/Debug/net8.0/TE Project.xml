@@ -430,11 +430,23 @@
             Data transfer object for creating a submission
             </summary>
         </member>
-        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.FullName">
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.FirstName">
             <summary>
-            Full name of the person
+            First name of the person
             </summary>
-            <example>John Smith</example>
+            <example>John</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.LastName">
+            <summary>
+            Last name of the person
+            </summary>
+            <example>Smith</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionDto.Gender">
+            <summary>
+            Gender of the person
+            </summary>
+            <example>Male</example>
         </member>
         <member name="P:TE_Project.DTOs.Submission.SubmissionDto.TeId">
             <summary>
@@ -491,9 +503,19 @@
             Submission ID
             </summary>
         </member>
-        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.FullName">
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.FirstName">
             <summary>
-            Full name of the person
+            First name of the person
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.LastName">
+            <summary>
+            Last name of the person
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.Gender">
+            <summary>
+            Gender of the person
             </summary>
         </member>
         <member name="P:TE_Project.DTOs.Submission.SubmissionResponseDto.TeId">
@@ -700,6 +722,18 @@
             <inheritdoc />
         </member>
         <member name="M:TE_Project.Migrations.fixmigrations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TE_Project.Migrations.RemoveFullNameAddGenderEnum">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.RemoveFullNameAddGenderEnum.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.RemoveFullNameAddGenderEnum.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.RemoveFullNameAddGenderEnum.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>
