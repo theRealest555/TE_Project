@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\cin\\1\\AB123456.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1\\cin\\1\\AB123456.jpg"
+    },
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\cin\\1\\AB123456_7cc73ae9ac3c415e8e21ebed0d5741dd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1\\cin\\1\\AB123456_7cc73ae9ac3c415e8e21ebed0d5741dd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\grey_card\\1\\12345-A-67890.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1\\grey_card\\1\\12345-A-67890.jpg"
+    },
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\grey_card\\1\\12345-A-67890_de9e4940abf24db5be21493e51c7eb92.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1\\grey_card\\1\\12345-A-67890_de9e4940abf24db5be21493e51c7eb92.jpg"
+    },
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\pic\\1\\AB123456_i.png",
+      "PackagePath": "staticwebassets\\uploads\\1\\pic\\1\\AB123456_i.png"
+    },
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\1\\pic\\1\\AB123456_i_ffd37d04001645e1b1874b250789cf04.png",
+      "PackagePath": "staticwebassets\\uploads\\1\\pic\\1\\AB123456_i_ffd37d04001645e1b1874b250789cf04.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TE Project.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TE Project.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TE Project.props",
+      "PackagePath": "build\\TE Project.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TE Project.props",
+      "PackagePath": "buildMultiTargeting\\TE Project.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TE Project.props",
+      "PackagePath": "buildTransitive\\TE Project.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

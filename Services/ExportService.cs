@@ -63,7 +63,7 @@ namespace TE_Project.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error generating Excel report");
-                throw new ApplicationException("Failed to generate report. Please try again later.", ex);
+                throw new InvalidOperationException("Failed to generate report. Please try again later.", ex);
             }
         }
 

@@ -62,7 +62,7 @@ namespace TE_Project.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error creating submission for plant {PlantId}", model.PlantId);
-                throw; // Let middleware handle it
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = $"An error occurred while creating submission for plant {model.PlantId}." });
             }
         }
 

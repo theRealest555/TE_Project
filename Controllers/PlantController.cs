@@ -33,8 +33,8 @@ namespace TE_Project.Controllers
         /// <response code="200">Returns all plants</response>
         /// <response code="401">If the user is not authenticated</response>
         [HttpGet]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<IEnumerable<PlantDto>>> GetAll()
         {
             var plants = await _plantService.GetAllPlantsAsync();

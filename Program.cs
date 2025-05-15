@@ -122,21 +122,19 @@ if (app.Environment.IsDevelopment())
     });
     app.UseDeveloperExceptionPage();
     
-    // Log all requests in development for debugging
     app.Use(async (context, next) =>
     {
         var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
-        logger.LogInformation($"Request: {context.Request.Method} {context.Request.Path} from {context.Connection.RemoteIpAddress}");
+        logger.LogInformation("Request: {Method} {Path} from {RemoteIpAddress}", context.Request.Method, context.Request.Path, context.Connection.RemoteIpAddress);
         
-        // Log headers for CORS debugging
         foreach (var header in context.Request.Headers)
         {
-            logger.LogDebug($"Header: {header.Key}: {header.Value}");
+            logger.LogDebug("Header: {HeaderKey}: {HeaderValue}", header.Key, header.Value);
         }
         
         await next.Invoke();
         
-        logger.LogInformation($"Response: {context.Response.StatusCode}");
+        logger.LogInformation("Response: {StatusCode}", context.Response.StatusCode);
     });
 }
 else
@@ -145,10 +143,8 @@ else
     app.UseHsts();
 }
 
-// Add security headers
 app.UseMiddleware<SecurityHeadersMiddleware>();
 
-// Important: Move CORS middleware up before routing and authentication
 app.UseCors("AllowFrontend");
 
 app.UseHttpsRedirection();
@@ -169,13 +165,12 @@ using (var scope = app.Services.CreateScope())
     }
     catch (Exception ex)
     {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while seeding the database.");
+        var seedLogger = services.GetRequiredService<ILogger<Program>>();
+        seedLogger.LogError(ex, "An error occurred while seeding the database.");
     }
 }
 
-// Print startup message with CORS information
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
 logger.LogInformation("API is running with CORS enabled for http://localhost:4200");
 
-app.Run();
+await app.RunAsync();

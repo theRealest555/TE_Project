@@ -107,7 +107,7 @@ namespace TE_Project.Services
                 // If there's an error, delete the submission
                 await DeleteSubmissionAsync(submission);
                 
-                throw new ApplicationException($"Error saving files: {ex.Message}", ex);
+                throw new InvalidOperationException($"Error saving files: {ex.Message}", ex);
             }
         }
 
@@ -159,7 +159,7 @@ namespace TE_Project.Services
             };
         }
 
-        private bool ValidateFiles(SubmissionDto model)
+        private static bool ValidateFiles(SubmissionDto model)
         {
             // Check CIN image
             if (model.CinImage == null || model.CinImage.Length == 0)

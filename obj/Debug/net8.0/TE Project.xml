@@ -9,9 +9,9 @@
             Controller for admin-specific operations
             </summary>
         </member>
-        <member name="M:TE_Project.Controllers.AdminController.GetAllAdmins">
+        <member name="M:TE_Project.Controllers.AdminController.GetAllAdmins(System.String,System.String,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
             <summary>
-            Gets all admin users (Super Admin only)
+            Gets all admin users with optional filtering (Super Admin only)
             </summary>
             <returns>List of admin users</returns>
             <response code="200">Returns the list of admin users</response>
@@ -27,6 +27,14 @@
             <response code="200">Returns the list of admin users for the plant</response>
             <response code="401">If the user is not authenticated</response>
             <response code="403">If the user is not a Super Admin</response>
+        </member>
+        <member name="M:TE_Project.Controllers.AdminController.UpdateAdmin(System.String,TE_Project.DTOs.Auth.UpdateAdminDto)">
+            <summary>
+            Updates an admin user's information (Super Admin only)
+            </summary>
+            <param name="userId">User ID to update</param>
+            <param name="model">Updated admin information</param>
+            <returns>Success message</returns>
         </member>
         <member name="M:TE_Project.Controllers.AdminController.ResetPassword(System.String)">
             <summary>
@@ -64,20 +72,12 @@
             <response code="200">Returns the JWT token and user information</response>
             <response code="401">If the credentials are invalid</response>
         </member>
-        <member name="M:TE_Project.Controllers.AuthController.Logout">
+        <member name="M:TE_Project.Controllers.AuthController.Logout(System.String)">
             <summary>
             Logs out the current user by revoking their JWT token
             </summary>
             <returns>Success message</returns>
             <response code="200">If the logout was successful</response>
-            <response code="401">If the user is not authenticated</response>
-        </member>
-        <member name="M:TE_Project.Controllers.AuthController.LogoutAllDevices">
-            <summary>
-            Logs out the user from all devices by revoking all their active tokens
-            </summary>
-            <returns>Success message</returns>
-            <response code="200">If the logout from all devices was successful</response>
             <response code="401">If the user is not authenticated</response>
         </member>
         <member name="M:TE_Project.Controllers.AuthController.RegisterAdmin(TE_Project.DTOs.Auth.RegisterAdminDto)">
@@ -108,14 +108,6 @@
             <response code="200">Returns the user profile</response>
             <response code="401">If the user is not authenticated</response>
             <response code="404">If the user is not found</response>
-        </member>
-        <member name="M:TE_Project.Controllers.AuthController.GetActiveSessions">
-            <summary>
-            Gets all active sessions (tokens) for the current user
-            </summary>
-            <returns>List of active sessions</returns>
-            <response code="200">Returns list of active sessions</response>
-            <response code="401">If the user is not authenticated</response>
         </member>
         <member name="T:TE_Project.Controllers.ExportController">
             <summary>
@@ -155,6 +147,28 @@
             <response code="200">Returns the plant</response>
             <response code="401">If the user is not authenticated</response>
             <response code="404">If the plant is not found</response>
+        </member>
+        <member name="M:TE_Project.Controllers.PlantsController.Create(TE_Project.DTOs.Plant.CreatePlantDto)">
+            <summary>
+            Creates a new plant (Super Admin only)
+            </summary>
+            <param name="model">Plant details</param>
+            <returns>Newly created plant</returns>
+        </member>
+        <member name="M:TE_Project.Controllers.PlantsController.Update(System.Int32,TE_Project.DTOs.Plant.UpdatePlantDto)">
+            <summary>
+            Updates a plant (Super Admin only)
+            </summary>
+            <param name="id">Plant ID</param>
+            <param name="model">Updated plant details</param>
+            <returns>Success message</returns>
+        </member>
+        <member name="M:TE_Project.Controllers.PlantsController.Delete(System.Int32)">
+            <summary>
+            Deletes a plant (Super Admin only)
+            </summary>
+            <param name="id">Plant ID</param>
+            <returns>Success message</returns>
         </member>
         <member name="T:TE_Project.Controllers.SubmissionsController">
             <summary>
@@ -272,6 +286,41 @@
             </summary>
             <example>false</example>
         </member>
+        <member name="T:TE_Project.DTOs.Auth.UpdateAdminDto">
+            <summary>
+            Data transfer object for updating an admin user
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UpdateAdminDto.FullName">
+            <summary>
+            Full name of the admin user
+            </summary>
+            <example>John Doe</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UpdateAdminDto.TEID">
+            <summary>
+            TE ID of the admin user
+            </summary>
+            <example>TE12345</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UpdateAdminDto.Email">
+            <summary>
+            Email address of the admin user
+            </summary>
+            <example>john.doe@example.com</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UpdateAdminDto.PlantId">
+            <summary>
+            Plant ID where the admin user belongs
+            </summary>
+            <example>1</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Auth.UpdateAdminDto.IsSuperAdmin">
+            <summary>
+            Flag to indicate if the user is a super admin
+            </summary>
+            <example>false</example>
+        </member>
         <member name="T:TE_Project.DTOs.Auth.UserDto">
             <summary>
             Data transfer object for user profile information
@@ -327,6 +376,23 @@
             Optional plant ID - if null and user is super admin, export all plants
             </summary>
         </member>
+        <member name="T:TE_Project.DTOs.Plant.CreatePlantDto">
+            <summary>
+            Data transfer object for creating a new plant
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Plant.CreatePlantDto.Name">
+            <summary>
+            Name of the plant
+            </summary>
+            <example>Plant Alpha</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Plant.CreatePlantDto.Description">
+            <summary>
+            Description of the plant
+            </summary>
+            <example>Main manufacturing facility located in the north sector</example>
+        </member>
         <member name="P:TE_Project.DTOs.Plant.PlantDto.Id">
             <summary>
             Plant ID
@@ -336,6 +402,28 @@
             <summary>
             Plant name
             </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Plant.PlantDto.Description">
+            <summary>
+            Plant description
+            </summary>
+        </member>
+        <member name="T:TE_Project.DTOs.Plant.UpdatePlantDto">
+            <summary>
+            Data transfer object for updating a plant
+            </summary>
+        </member>
+        <member name="P:TE_Project.DTOs.Plant.UpdatePlantDto.Name">
+            <summary>
+            New name of the plant
+            </summary>
+            <example>Plant Beta</example>
+        </member>
+        <member name="P:TE_Project.DTOs.Plant.UpdatePlantDto.Description">
+            <summary>
+            New description of the plant
+            </summary>
+            <example>Updated manufacturing facility with expanded capabilities</example>
         </member>
         <member name="T:TE_Project.DTOs.Submission.SubmissionDto">
             <summary>
@@ -600,6 +688,18 @@
             <inheritdoc />
         </member>
         <member name="M:TE_Project.Migrations.FixTokenColumnSize.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TE_Project.Migrations.fixmigrations">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.fixmigrations.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.fixmigrations.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.fixmigrations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

@@ -64,13 +64,12 @@ namespace TE_Project.Controllers
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout([FromHeader(Name = "Authorization")] string authorizationHeader)
         {
-            // Get current token from request
-            var token = HttpContext.Request.Headers["Authorization"]
-                .FirstOrDefault()?.Split(" ").Last();
+            // Extract token from Authorization header
+            var token = authorizationHeader?.Split(" ").LastOrDefault();
 
-            if (token != null)
+            if (!string.IsNullOrEmpty(token))
             {
                 await _tokenService.RevokeTokenAsync(token);
             }

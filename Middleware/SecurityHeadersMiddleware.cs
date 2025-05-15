@@ -23,11 +23,14 @@ namespace TE_Project.Middleware
             {
                 context.Response.Headers.Append("Content-Security-Policy", 
                     "default-src 'self'; " +
-                    "script-src 'self' 'unsafe-inline'; " +
-                    "style-src 'self' 'unsafe-inline'; " +
-                    "img-src 'self' data:; " +
+                    "script-src 'self'; " +
+                    "style-src 'self'; " +
+                    "img-src 'self'; " +
                     "font-src 'self'; " +
-                    "connect-src 'self'");
+                    "connect-src 'self'; " +
+                    "object-src 'none'; " +
+                    "base-uri 'self'; " +
+                    "form-action 'self'");
             }
 
             await _next(context);

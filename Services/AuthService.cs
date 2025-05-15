@@ -260,85 +260,90 @@ namespace TE_Project.Services
                 return (false, "User not found");
             }
 
-            // Update user properties
             user.FullName = model.FullName;
-            
-            if(!string.IsNullOrEmpty(model.Email) && user.Email != model.Email)
+
+            var emailResult = await UpdateAdminEmailAsync(user, model.Email, userId);
+            if (!emailResult.success)
+                return emailResult;
+
+            var plantResult = await UpdateAdminPlantAsync(user, model.PlantId);
+            if (!plantResult.success)
+                return plantResult;
+
+            if (model.TEID != null)
+                user.TEID = model.TEID;
+
+            var roleResult = await UpdateAdminRolesAsync(user, model.IsSuperAdmin);
+            if (!roleResult.success)
+                return roleResult;
+
+            user.UpdatedAt = DateTime.UtcNow;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
             {
-                // Check if email is already in use
-                var existingUser = await _userRepository.GetByEmailAsync(model.Email);
+                _logger.LogError("Failed to update admin user {UserId}: {Errors}",
+                    userId, string.Join(", ", result.Errors));
+                return (false, string.Join(", ", result.Errors.Select(e => e.Description)));
+            }
+
+            _logger.LogInformation("Admin user {UserId} updated successfully", userId);
+            return (true, "Admin updated successfully");
+        }
+
+        private async Task<(bool success, string message)> UpdateAdminEmailAsync(User user, string? newEmail, string userId)
+        {
+            if (!string.IsNullOrEmpty(newEmail) && user.Email != newEmail)
+            {
+                var existingUser = await _userRepository.GetByEmailAsync(newEmail);
                 if (existingUser != null && existingUser.Id != userId)
                 {
                     return (false, "Email is already in use by another user");
                 }
-                
-                user.Email = model.Email;
-                user.UserName = model.Email; // Username is the same as email in this application
-                user.NormalizedEmail = model.Email.ToUpper();
-                user.NormalizedUserName = model.Email.ToUpper();
+
+                user.Email = newEmail;
+                user.UserName = newEmail;
+                user.NormalizedEmail = newEmail.ToUpper();
+                user.NormalizedUserName = newEmail.ToUpper();
             }
-            
-            if (model.PlantId > 0 && user.PlantId != model.PlantId)
+            return (true, string.Empty);
+        }
+
+        private async Task<(bool success, string message)> UpdateAdminPlantAsync(User user, int plantId)
+        {
+            if (plantId > 0 && user.PlantId != plantId)
             {
-                // Validate plant exists
-                var plant = await _plantRepository.GetByIdAsync(model.PlantId);
+                var plant = await _plantRepository.GetByIdAsync(plantId);
                 if (plant == null)
                 {
                     return (false, "Plant not found");
                 }
-                
-                user.PlantId = model.PlantId;
+                user.PlantId = plantId;
             }
-            
-            if (model.TEID != null)
+            return (true, string.Empty);
+        }
+
+        private async Task<(bool success, string message)> UpdateAdminRolesAsync(User user, bool? isSuperAdmin)
+        {
+            if (isSuperAdmin.HasValue && user.IsSuperAdmin != isSuperAdmin.Value)
             {
-                user.TEID = model.TEID;
-            }
-            
-            if (model.IsSuperAdmin.HasValue && user.IsSuperAdmin != model.IsSuperAdmin.Value)
-            {
-                user.IsSuperAdmin = model.IsSuperAdmin.Value;
-                
-                // Update roles
+                user.IsSuperAdmin = isSuperAdmin.Value;
                 var roles = await _userManager.GetRolesAsync(user);
-                
-                if (model.IsSuperAdmin.Value && !roles.Contains(AdminRole.SuperAdmin))
+
+                if (isSuperAdmin.Value && !roles.Contains(AdminRole.SuperAdmin))
                 {
-                    // Remove regular admin role if exists
                     if (roles.Contains(AdminRole.RegularAdmin))
-                    {
                         await _userManager.RemoveFromRoleAsync(user, AdminRole.RegularAdmin);
-                    }
-                    
-                    // Add super admin role
                     await _userManager.AddToRoleAsync(user, AdminRole.SuperAdmin);
                 }
-                else if (!model.IsSuperAdmin.Value && roles.Contains(AdminRole.SuperAdmin))
+                else if (!isSuperAdmin.Value && roles.Contains(AdminRole.SuperAdmin))
                 {
-                    // Remove super admin role
                     await _userManager.RemoveFromRoleAsync(user, AdminRole.SuperAdmin);
-                    
-                    // Add regular admin role if not already assigned
                     if (!roles.Contains(AdminRole.RegularAdmin))
-                    {
                         await _userManager.AddToRoleAsync(user, AdminRole.RegularAdmin);
-                    }
                 }
             }
-            
-            user.UpdatedAt = DateTime.UtcNow;
-            
-            var result = await _userManager.UpdateAsync(user);
-            
-            if (!result.Succeeded)
-            {
-                _logger.LogError("Failed to update admin user {UserId}: {Errors}", 
-                    userId, string.Join(", ", result.Errors));
-                return (false, string.Join(", ", result.Errors.Select(e => e.Description)));
-            }
-            
-            _logger.LogInformation("Admin user {UserId} updated successfully", userId);
-            return (true, "Admin updated successfully");
+            return (true, string.Empty);
         }
 
         public async Task<IEnumerable<UserDto>> GetAllAdminsAsync(
@@ -418,7 +423,7 @@ namespace TE_Project.Services
             return result;
         }
 
-        private string DeterminePassword(RegisterAdminDto model)
+        private static string DeterminePassword(RegisterAdminDto model)
         {
             // Use provided password, or fallback to generated password
             return !string.IsNullOrEmpty(model.Password)
@@ -426,13 +431,13 @@ namespace TE_Project.Services
                 : GenerateStrongPassword(model.TEID);
         }
 
-        private string GenerateStrongPassword(string baseValue)
+        private static string GenerateStrongPassword(string baseValue)
         {
             // Generate a strong password based on TEID with additional random elements
             return $"{baseValue}A1!{Guid.NewGuid().ToString("N")[..8]}";
         }
 
-        private string GenerateRandomPassword()
+        private static string GenerateRandomPassword()
         {
             // Generate a random strong password with at least 12 characters
             var random = new Random();
@@ -460,7 +465,7 @@ namespace TE_Project.Services
             return new string(password.ToString().OrderBy(x => Guid.NewGuid()).ToArray());
         }
 
-        private List<string> ValidatePassword(string password)
+        private static List<string> ValidatePassword(string password)
         {
             var errors = new List<string>();
 

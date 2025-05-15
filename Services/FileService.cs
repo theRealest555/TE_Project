@@ -62,13 +62,13 @@ namespace TE_Project.Services
                     await file.CopyToAsync(stream);
                 }
 
-                _logger.LogInformation($"File {fileName} saved successfully to {folderPath}");
+                _logger.LogInformation("File {FileName} saved successfully to {FolderPath}", fileName, folderPath);
                 return filePath;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error saving file {fileName} for plant {plantId}, file type {fileType}");
-                throw new ApplicationException($"Error occurred while saving the file: {ex.Message}", ex);
+                _logger.LogError(ex, "Error saving file {FileName} for plant {PlantId}, file type {FileType}", fileName, plantId, fileType);
+                throw new InvalidOperationException($"Error occurred while saving the file: {ex.Message}", ex);
             }
         }
 
@@ -95,8 +95,8 @@ namespace TE_Project.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error processing file name {originalFileName} for file type {fileType}");
-                throw;
+                _logger.LogError(ex, "Error processing file name {OriginalFileName} for file type {FileType}", originalFileName, fileType);
+                throw new InvalidOperationException($"Error occurred while processing the file name '{originalFileName}' for file type '{fileType}': {ex.Message}", ex);
             }
         }
 
@@ -142,7 +142,7 @@ namespace TE_Project.Services
             int folderNumber = 1;
             if (folders.Any())
             {
-                folderNumber = folders.Last();
+                folderNumber = folders[folders.Count - 1];
                 var currentFolderPath = Path.Combine(fileTypeFolderPath, folderNumber.ToString());
 
                 // Check if the current folder has reached the maximum file limit
@@ -172,16 +172,16 @@ namespace TE_Project.Services
                 if (File.Exists(filePath))
                 {
                     await Task.Run(() => File.Delete(filePath));
-                    _logger.LogInformation($"File {filePath} deleted successfully");
+                    _logger.LogInformation("File {FilePath} deleted successfully", filePath);
                     return await Task.FromResult(true);
                 }
 
-                _logger.LogWarning($"File {filePath} not found for deletion");
+                _logger.LogWarning("File {FilePath} not found for deletion", filePath);
                 return await Task.FromResult(false);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error deleting file {filePath}");
+                _logger.LogError(ex, "Error deleting file {FilePath}", filePath);
                 return await Task.FromResult(false);
             }
         }
@@ -193,7 +193,7 @@ namespace TE_Project.Services
             {
                 if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
                 {
-                    _logger.LogWarning($"File {filePath} not found");
+                    _logger.LogWarning("File {FilePath} not found", filePath);
                     return null;
                 }
 
@@ -201,13 +201,13 @@ namespace TE_Project.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error reading file {filePath}");
+                _logger.LogError(ex, "Error reading file {FilePath}", filePath);
                 return null;
             }
         }
 
         // Sanitize filename to prevent path traversal attacks
-        private string SanitizeFileName(string fileName)
+        private static string SanitizeFileName(string fileName)
         {
             if (string.IsNullOrEmpty(fileName))
                 return fileName;
