@@ -50,10 +50,16 @@ namespace TE_Project.Services
 
             // Determine and validate password
             string password = DeterminePassword(model);
-            var passwordErrors = ValidatePassword(password);
-            if (passwordErrors.Any())
-                return (IdentityResult.Failed(passwordErrors.Select(e => new IdentityError { Description = e }).ToArray()), string.Empty);
-
+            bool isDefaultPassword = string.IsNullOrEmpty(model.Password); // Flag to track if we're using the default TEID
+            
+            // Only validate password if it's user-provided, not if it's the default TEID
+            if (!isDefaultPassword)
+            {
+                var passwordErrors = ValidatePassword(password);
+                if (passwordErrors.Any())
+                    return (IdentityResult.Failed(passwordErrors.Select(e => new IdentityError { Description = e }).ToArray()), string.Empty);
+            }
+            
             // Create user entity
             var user = new User
             {
@@ -64,11 +70,29 @@ namespace TE_Project.Services
                 IsSuperAdmin = model.IsSuperAdmin,
                 EmailConfirmed = true,
                 TEID = model.TEID,
-                RequirePasswordChange = true
+                RequirePasswordChange = true // Always require password change on first login
             };
 
-            // Create user with password
-            var result = await _userManager.CreateAsync(user, password);
+            // Create user with password - for TEID passwords we'll use AddPasswordAsync instead of CreateAsync with password
+            IdentityResult result;
+            
+            if (isDefaultPassword)
+            {
+                // For default TEID passwords, create the user first, then set password directly to bypass validation
+                result = await _userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    // Set password without validation
+                    var passwordHash = _userManager.PasswordHasher.HashPassword(user, password);
+                    user.PasswordHash = passwordHash;
+                    await _userManager.UpdateAsync(user);
+                }
+            }
+            else
+            {
+                // Normal path with validation for user-provided passwords
+                result = await _userManager.CreateAsync(user, password);
+            }
 
             // Add role if creation is successful
             if (result.Succeeded)
