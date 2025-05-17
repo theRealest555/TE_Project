@@ -1,17 +1,13 @@
-// Update to SubmissionDtoValidator.cs to enforce TE ID format
-// File: Validators/Submission/SubmissionDtoValidator.cs
-
 using FluentValidation;
 using TE_Project.DTOs.Submission;
 using TE_Project.Helpers;
-using TE_Project.Repositories.Interfaces;
 using TE_Project.Enums;
 
 namespace TE_Project.Validators.Submission
 {
     public class SubmissionDtoValidator : AbstractValidator<SubmissionDto>
     {
-        public SubmissionDtoValidator(ISubmissionRepository submissionRepository)
+        public SubmissionDtoValidator()
         {
             RuleFor(x => x.FirstName)
                 .NotEmpty().WithMessage("First name is required")
@@ -32,10 +28,8 @@ namespace TE_Project.Validators.Submission
             RuleFor(x => x.Cin)
                 .NotEmpty().WithMessage("CIN is required")
                 .MaximumLength(50).WithMessage("CIN cannot exceed 50 characters")
-                .Matches(RegexPatterns.CinPattern).WithMessage("CIN format is invalid")
-                .MustAsync(async (cin, cancellation) => 
-                    !await submissionRepository.ExistsAsync(s => s.Cin == cin)
-                ).WithMessage("A submission with this CIN already exists");
+                .Matches(RegexPatterns.CinPattern).WithMessage("CIN format is invalid");
+                // Removed the asynchronous validation rule for duplicate CIN
 
             RuleFor(x => x.DateOfBirth)
                 .NotEmpty().WithMessage("Date of birth is required")
