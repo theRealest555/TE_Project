@@ -452,7 +452,7 @@ namespace TE_Project.Services
             // Use provided password, or fallback to TEID directly
             return !string.IsNullOrEmpty(model.Password)
                 ? model.Password
-                : model.TEID;
+                : model.TEID + "_init";
         }
 
         // The GenerateStrongPassword method has been removed since it's no longer needed

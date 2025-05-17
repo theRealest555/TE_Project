@@ -696,64 +696,16 @@
             Gets token validation parameters
             </summary>
         </member>
-        <member name="T:TE_Project.Migrations.InitialCreate">
+        <member name="T:TE_Project.Migrations.initmigration">
             <inheritdoc />
         </member>
-        <member name="M:TE_Project.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:TE_Project.Migrations.initmigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:TE_Project.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:TE_Project.Migrations.initmigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:TE_Project.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:TE_Project.Migrations.FixTokenColumnSize">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.FixTokenColumnSize.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.FixTokenColumnSize.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.FixTokenColumnSize.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:TE_Project.Migrations.fixmigrations">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.fixmigrations.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.fixmigrations.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.fixmigrations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:TE_Project.Migrations.RemoveFullNameAddGenderEnum">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.RemoveFullNameAddGenderEnum.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.RemoveFullNameAddGenderEnum.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.RemoveFullNameAddGenderEnum.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:TE_Project.Migrations.mig">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.mig.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.mig.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:TE_Project.Migrations.mig.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:TE_Project.Migrations.initmigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

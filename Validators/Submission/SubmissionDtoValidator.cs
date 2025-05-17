@@ -1,3 +1,6 @@
+// Update to SubmissionDtoValidator.cs to enforce TE ID format
+// File: Validators/Submission/SubmissionDtoValidator.cs
+
 using FluentValidation;
 using TE_Project.DTOs.Submission;
 using TE_Project.Helpers;
@@ -23,7 +26,8 @@ namespace TE_Project.Validators.Submission
 
             RuleFor(x => x.TeId)
                 .NotEmpty().WithMessage("TE ID is required")
-                .MaximumLength(50).WithMessage("TE ID cannot exceed 50 characters");
+                .MaximumLength(50).WithMessage("TE ID cannot exceed 50 characters")
+                .Matches(@"^TE\d+$").WithMessage("TE ID must be in the format TE followed by numbers (e.g. TE12345)");
 
             RuleFor(x => x.Cin)
                 .NotEmpty().WithMessage("CIN is required")

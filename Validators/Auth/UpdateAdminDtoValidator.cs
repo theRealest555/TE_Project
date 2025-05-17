@@ -12,9 +12,9 @@ namespace TE_Project.Validators.Auth
                 .MaximumLength(100).WithMessage("Full name cannot exceed 100 characters");
 
             RuleFor(x => x.TEID)
-                .Matches(@"^[A-Za-z0-9_\-]+$").WithMessage("TE ID contains invalid characters")
+                .Matches(@"^TE\d+$").WithMessage("TE ID must be in the format TE followed by numbers (e.g. TE12345)")
                 .When(x => !string.IsNullOrEmpty(x.TEID));
-
+                
             RuleFor(x => x.Email)
                 .EmailAddress().WithMessage("Invalid email format")
                 .When(x => !string.IsNullOrEmpty(x.Email));
