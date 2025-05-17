@@ -425,17 +425,13 @@ namespace TE_Project.Services
 
         private static string DeterminePassword(RegisterAdminDto model)
         {
-            // Use provided password, or fallback to generated password
+            // Use provided password, or fallback to TEID directly
             return !string.IsNullOrEmpty(model.Password)
                 ? model.Password
-                : GenerateStrongPassword(model.TEID);
+                : model.TEID;
         }
 
-        private static string GenerateStrongPassword(string baseValue)
-        {
-            // Generate a strong password based on TEID with additional random elements
-            return $"{baseValue}A1!{Guid.NewGuid().ToString("N")[..8]}";
-        }
+        // The GenerateStrongPassword method has been removed since it's no longer needed
 
         private static string GenerateRandomPassword()
         {

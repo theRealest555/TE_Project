@@ -80,6 +80,14 @@
             <response code="200">If the logout was successful</response>
             <response code="401">If the user is not authenticated</response>
         </member>
+        <member name="M:TE_Project.Controllers.AuthController.LogoutAll">
+            <summary>
+            Logs out the current user from all devices by revoking all their JWT tokens
+            </summary>
+            <returns>Success message</returns>
+            <response code="200">If the logout was successful</response>
+            <response code="401">If the user is not authenticated</response>
+        </member>
         <member name="M:TE_Project.Controllers.AuthController.RegisterAdmin(TE_Project.DTOs.Auth.RegisterAdminDto)">
             <summary>
             Registers a new admin user
@@ -734,6 +742,18 @@
             <inheritdoc />
         </member>
         <member name="M:TE_Project.Migrations.RemoveFullNameAddGenderEnum.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TE_Project.Migrations.mig">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.mig.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.mig.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TE_Project.Migrations.mig.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>
