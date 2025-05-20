@@ -79,14 +79,11 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Register repositories and services
 builder.Services.RegisterRepositories();
 builder.Services.RegisterServices();
 
-// Configure HttpContextAccessor
 builder.Services.AddHttpContextAccessor();
 
-// EXPLICIT CORS CONFIGURATION - Override the existing configuration to ensure Angular app is allowed
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -94,7 +91,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(
                 "http://localhost:4200",  // Angular dev server
                 "http://localhost:5268",  // Backend server (for same-origin requests)
-                "https://localhost:7170"  // Backend HTTPS server
+                "https://localhost:7170"  
              )
              .AllowAnyHeader()
              .AllowAnyMethod()
@@ -102,16 +99,12 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Configure rate limiting
 builder.Services.ConfigureRateLimiting();
 
-// Configure Swagger/OpenAPI
 builder.Services.ConfigureSwagger();
 
-// Build the app
 var app = builder.Build();
 
-// Configure middleware pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

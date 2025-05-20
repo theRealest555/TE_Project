@@ -36,19 +36,16 @@ namespace TE_Project.Services
             {
                 var plantId = exportDto.PlantId ?? adminPlantId;
 
-                // Enforce plant restriction for regular admins
                 if (!isSuperAdmin && plantId != adminPlantId)
                 {
                     plantId = adminPlantId;
                 }
 
-                // Fetch submissions based on plant ID
                 IEnumerable<Submission> submissions;
                 string? plantName = null;
                 
                 if (plantId.HasValue)
                 {
-                    // Get the plant name for the filename
                     var plant = await _plantRepository.GetByIdAsync(plantId.Value);
                     if (plant != null)
                     {
@@ -66,7 +63,6 @@ namespace TE_Project.Services
                     throw new UnauthorizedAccessException("Access denied to export data");
                 }
 
-                // Order by creation date (oldest first)
                 submissions = submissions.OrderBy(s => s.CreatedAt).ToList();
 
                 return exportDto.Format switch
@@ -87,14 +83,12 @@ namespace TE_Project.Services
         {
             using var workbook = new XLWorkbook();
             
-            // Group submissions into batches of 100
             var batchedSubmissions = submissions
                 .Select((s, index) => new { Submission = s, Index = index })
                 .GroupBy(x => x.Index / 100)
                 .Select(g => g.Select(x => x.Submission).ToList())
                 .ToList();
             
-            // Create at least one sheet even if there are no submissions
             if (batchedSubmissions.Count == 0)
             {
                 batchedSubmissions.Add(new List<Submission>());
@@ -106,17 +100,14 @@ namespace TE_Project.Services
             {
                 var worksheet = workbook.Worksheets.Add($"Report_{sheetNumber}");
                 
-                // Headers - Updated according to Image 2
                 worksheet.Cell(1, 1).Value = "Last name";
                 worksheet.Cell(1, 2).Value = "First name";
                 worksheet.Cell(1, 3).Value = "Gender";
                 worksheet.Cell(1, 4).Value = "National ID";
                 worksheet.Cell(1, 5).Value = "Date of birth";
 
-                // Make headers bold
                 worksheet.Range(1, 1, 1, 5).Style.Font.Bold = true;
 
-                // Data rows
                 for (int i = 0; i < batch.Count; i++)
                 {
                     worksheet.Cell(i + 2, 1).Value = batch[i].LastName;
@@ -126,19 +117,16 @@ namespace TE_Project.Services
                     worksheet.Cell(i + 2, 5).Value = batch[i].DateOfBirth.ToString("yyyy-MM-dd");
                 }
 
-                // Auto-fit columns
                 worksheet.Columns().AdjustToContents();
                 
                 sheetNumber++;
             }
 
-            // Convert to bytes
             using var stream = new MemoryStream();
             workbook.SaveAs(stream);
             stream.Position = 0;
             var content = stream.ToArray();
 
-            // Create file name with plant information
             string plantInfo;
             if (plantId.HasValue)
             {
@@ -149,7 +137,6 @@ namespace TE_Project.Services
                 plantInfo = "_AllPlants";
             }
                 
-            // Sanitize the plant name for file naming
             if (plantInfo != "_AllPlants")
             {
                 plantInfo = plantInfo.Replace(" ", "_").Replace("/", "_").Replace("\\", "_")
@@ -168,19 +155,16 @@ namespace TE_Project.Services
         {
             using var workbook = new XLWorkbook();
             
-            // Filter submissions with grey card
             var submissionsWithGreyCard = submissions
                 .Where(s => !string.IsNullOrEmpty(s.GreyCard))
                 .ToList();
             
-            // Group submissions into batches of 100
             var batchedSubmissions = submissionsWithGreyCard
                 .Select((s, index) => new { Submission = s, Index = index })
                 .GroupBy(x => x.Index / 100)
                 .Select(g => g.Select(x => x.Submission).ToList())
                 .ToList();
             
-            // Create at least one sheet even if there are no submissions
             if (batchedSubmissions.Count == 0)
             {
                 batchedSubmissions.Add(new List<Submission>());
@@ -192,33 +176,27 @@ namespace TE_Project.Services
             {
                 var worksheet = workbook.Worksheets.Add($"Report_{sheetNumber}");
                 
-                // Headers - Updated according to Image 1
                 worksheet.Cell(1, 1).Value = "National ID";
                 worksheet.Cell(1, 2).Value = "Registration number";
 
-                // Make headers bold
                 worksheet.Range(1, 1, 1, 2).Style.Font.Bold = true;
 
-                // Data rows
                 for (int i = 0; i < batch.Count; i++)
                 {
                     worksheet.Cell(i + 2, 1).Value = batch[i].Cin;
                     worksheet.Cell(i + 2, 2).Value = batch[i].GreyCard;
                 }
 
-                // Auto-fit columns
                 worksheet.Columns().AdjustToContents();
                 
                 sheetNumber++;
             }
 
-            // Convert to bytes
             using var stream = new MemoryStream();
             workbook.SaveAs(stream);
             stream.Position = 0;
             var content = stream.ToArray();
 
-            // Create file name with plant information
             string plantInfo;
             if (plantId.HasValue)
             {
@@ -229,7 +207,6 @@ namespace TE_Project.Services
                 plantInfo = "_AllPlants";
             }
                 
-            // Sanitize the plant name for file naming
             if (plantInfo != "_AllPlants")
             {
                 plantInfo = plantInfo.Replace(" ", "_").Replace("/", "_").Replace("\\", "_")

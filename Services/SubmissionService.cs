@@ -28,27 +28,23 @@ namespace TE_Project.Services
 
         public async Task<Submission> CreateSubmissionAsync(SubmissionDto model)
         {
-            // Validate plant exists
             var plant = await _plantRepository.GetByIdAsync(model.PlantId);
             if (plant == null)
             {
                 throw new ArgumentException("Invalid plant");
             }
 
-            // Check if a submission with the same CIN already exists
             var existingSubmission = await _submissionRepository.GetFirstOrDefaultAsync(s => s.Cin == model.Cin);
             if (existingSubmission != null)
             {
                 throw new ArgumentException("A submission with this CIN already exists");
             }
 
-            // Validate files
             if (!ValidateFiles(model))
             {
                 throw new ArgumentException("Invalid file(s). Files must be images (jpg, jpeg, png) and less than 1MB.");
             }
 
-            // Create the submission
             var submission = new Submission
             {
                 FirstName = model.FirstName,
@@ -62,13 +58,11 @@ namespace TE_Project.Services
                 Files = new List<UploadedFile>()
             };
 
-            // Save the submission to get an ID
             await _submissionRepository.AddAsync(submission);
             await _submissionRepository.SaveChangesAsync();
 
             try
             {
-                // Process CIN image
                 var cinFileName = _fileService.GetFileNameForSaving(model.Cin + Path.GetExtension(model.CinImage.FileName), FileType.Cin);
                 var cinFilePath = await _fileService.SaveFileAsync(model.CinImage, model.PlantId, FileType.Cin, cinFileName);
                 submission.Files.Add(new UploadedFile
@@ -79,7 +73,6 @@ namespace TE_Project.Services
                     SubmissionId = submission.Id
                 });
 
-                // Process PIC image
                 var picFileName = _fileService.GetFileNameForSaving(model.Cin + "_i" + Path.GetExtension(model.PicImage.FileName), FileType.PIC);
                 var picFilePath = await _fileService.SaveFileAsync(model.PicImage, model.PlantId, FileType.PIC, picFileName);
                 submission.Files.Add(new UploadedFile
@@ -90,7 +83,6 @@ namespace TE_Project.Services
                     SubmissionId = submission.Id
                 });
 
-                // Process Grey Card image if provided
                 if (model.GreyCardImage != null && !string.IsNullOrEmpty(model.GreyCard))
                 {
                     var greyCardFileName = _fileService.GetFileNameForSaving(model.GreyCard + Path.GetExtension(model.GreyCardImage.FileName), FileType.CG);
@@ -113,7 +105,6 @@ namespace TE_Project.Services
             {
                 _logger.LogError(ex, "Error saving files for submission {SubmissionId}", submission.Id);
                 
-                // If there's an error, delete the submission
                 await DeleteSubmissionAsync(submission);
                 
                 throw new InvalidOperationException($"Error saving files: {ex.Message}", ex);
@@ -204,13 +195,11 @@ namespace TE_Project.Services
         {
             try
             {
-                // Delete files from storage if they exist
                 foreach (var file in submission.Files)
                 {
                     await _fileService.DeleteFileAsync(file.FilePath);
                 }
 
-                // Remove submission from database
                 _submissionRepository.Remove(submission);
                 await _submissionRepository.SaveChangesAsync();
                 

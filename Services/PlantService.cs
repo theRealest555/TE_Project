@@ -39,20 +39,17 @@ namespace TE_Project.Services
 
         public async Task<PlantDto> CreatePlantAsync(CreatePlantDto model)
         {
-            // Validate input
             if (string.IsNullOrWhiteSpace(model.Name))
             {
                 throw new ArgumentException("Plant name is required");
             }
             
-            // Check if plant name already exists
             var existingPlant = await _plantRepository.GetFirstOrDefaultAsync(p => p.Name == model.Name);
             if (existingPlant != null)
             {
                 throw new ArgumentException($"A plant with the name '{model.Name}' already exists");
             }
             
-            // Create new plant
             var plant = new Plant
             {
                 Name = model.Name,
@@ -69,13 +66,11 @@ namespace TE_Project.Services
 
         public async Task<(bool success, string message)> UpdatePlantAsync(int id, UpdatePlantDto model)
         {
-            // Validate input
             if (string.IsNullOrWhiteSpace(model.Name))
             {
                 return (false, "Plant name is required");
             }
             
-            // Check if plant exists
             var plant = await _plantRepository.GetByIdAsync(id, trackChanges: true);
             if (plant == null)
             {
@@ -83,7 +78,6 @@ namespace TE_Project.Services
                 return (false, "Plant not found");
             }
             
-            // Check if new name is already used by another plant
             if (plant.Name != model.Name)
             {
                 var existingPlant = await _plantRepository.GetFirstOrDefaultAsync(p => p.Name == model.Name);
@@ -93,7 +87,6 @@ namespace TE_Project.Services
                 }
             }
             
-            // Update plant
             plant.Name = model.Name;
             plant.Description = model.Description;
             
@@ -106,7 +99,6 @@ namespace TE_Project.Services
 
         public async Task<(bool success, string message)> DeletePlantAsync(int id)
         {
-            // Check if plant exists
             var plant = await _plantRepository.GetByIdAsync(id, includeProperties: "Admins,Submissions", trackChanges: true);
             if (plant == null)
             {
@@ -114,7 +106,6 @@ namespace TE_Project.Services
                 return (false, "Plant not found");
             }
             
-            // Check if plant has associated users or submissions
             if ((plant.Admins != null && plant.Admins.Any()) || 
                 (plant.Submissions != null && plant.Submissions.Any()))
             {

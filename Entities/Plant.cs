@@ -14,7 +14,6 @@ namespace TE_Project.Entities
         [MaxLength(500)]
         public string Description { get; set; } = string.Empty;
 
-        // Navigation properties
         public ICollection<User> Admins { get; set; } = new List<User>();
         public ICollection<Submission> Submissions { get; set; } = new List<Submission>();
     }

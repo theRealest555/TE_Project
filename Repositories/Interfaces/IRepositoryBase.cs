@@ -4,7 +4,6 @@ namespace TE_Project.Repositories.Interfaces
 {
     public interface IRepositoryBase<T> where T : class
     {
-        // Read operations
         Task<IEnumerable<T>> GetAllAsync(
             Expression<Func<T, bool>>? filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
@@ -20,7 +19,6 @@ namespace TE_Project.Repositories.Interfaces
             
         Task<bool> ExistsAsync(Expression<Func<T, bool>> filter);
         
-        // Create, Update, Delete operations
         Task<T> AddAsync(T entity);
         Task AddRangeAsync(IEnumerable<T> entities);
         void Update(T entity);

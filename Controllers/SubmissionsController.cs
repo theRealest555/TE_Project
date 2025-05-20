@@ -51,8 +51,6 @@ namespace TE_Project.Controllers
                     return BadRequest(new { message = "First name and last name are required." });
                 }
 
-                // Gender is now an enum so no need to validate it for null/empty
-                
                 // Check for duplicate CIN submissions
                 var existingSubmission = await _submissionService.GetSubmissionByCinAsync(model.Cin);
                 if (existingSubmission != null)

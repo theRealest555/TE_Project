@@ -29,7 +29,6 @@ namespace TE_Project.Validators.Submission
                 .NotEmpty().WithMessage("CIN is required")
                 .MaximumLength(50).WithMessage("CIN cannot exceed 50 characters")
                 .Matches(RegexPatterns.CinPattern).WithMessage("CIN format is invalid");
-                // Removed the asynchronous validation rule for duplicate CIN
 
             RuleFor(x => x.DateOfBirth)
                 .NotEmpty().WithMessage("Date of birth is required")

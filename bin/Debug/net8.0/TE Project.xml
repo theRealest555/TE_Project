@@ -212,11 +212,6 @@
             <response code="401">If the user is not authenticated</response>
             <response code="403">If the user is not a Super Admin</response>
         </member>
-        <member name="T:TE_Project.DTOs.Auth.ChangePasswordDto">
-            <summary>
-            Data transfer object for changing user password
-            </summary>
-        </member>
         <member name="P:TE_Project.DTOs.Auth.ChangePasswordDto.CurrentPassword">
             <summary>
             Current password of the user

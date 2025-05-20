@@ -9,7 +9,6 @@ using TE_Project.Services.Interfaces;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Query;
 
-
 namespace TE_Project.Services
 {
     public class AuthService : IAuthService
@@ -39,20 +38,16 @@ namespace TE_Project.Services
 
         public async Task<(IdentityResult result, string userId)> RegisterAdminAsync(RegisterAdminDto model)
         {
-            // Validate input
             if (string.IsNullOrWhiteSpace(model.Email))
                 return (IdentityResult.Failed(new IdentityError { Description = "Email is required" }), string.Empty);
 
-            // Check if user already exists
             var existingUser = await _userRepository.GetByEmailAsync(model.Email);
             if (existingUser != null)
                 return (IdentityResult.Failed(new IdentityError { Description = "Email is already registered" }), string.Empty);
 
-            // Determine and validate password
             string password = DeterminePassword(model);
-            bool isDefaultPassword = string.IsNullOrEmpty(model.Password); // Flag to track if we're using the default TEID
+            bool isDefaultPassword = string.IsNullOrEmpty(model.Password);
             
-            // Only validate password if it's user-provided, not if it's the default TEID
             if (!isDefaultPassword)
             {
                 var passwordErrors = ValidatePassword(password);
@@ -60,7 +55,6 @@ namespace TE_Project.Services
                     return (IdentityResult.Failed(passwordErrors.Select(e => new IdentityError { Description = e }).ToArray()), string.Empty);
             }
             
-            // Create user entity
             var user = new User
             {
                 UserName = model.Email,
@@ -70,19 +64,16 @@ namespace TE_Project.Services
                 IsSuperAdmin = model.IsSuperAdmin,
                 EmailConfirmed = true,
                 TEID = model.TEID,
-                RequirePasswordChange = true // Always require password change on first login
+                RequirePasswordChange = true
             };
 
-            // Create user with password - for TEID passwords we'll use AddPasswordAsync instead of CreateAsync with password
             IdentityResult result;
             
             if (isDefaultPassword)
             {
-                // For default TEID passwords, create the user first, then set password directly to bypass validation
                 result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    // Set password without validation
                     var passwordHash = _userManager.PasswordHasher.HashPassword(user, password);
                     user.PasswordHash = passwordHash;
                     await _userManager.UpdateAsync(user);
@@ -90,11 +81,9 @@ namespace TE_Project.Services
             }
             else
             {
-                // Normal path with validation for user-provided passwords
                 result = await _userManager.CreateAsync(user, password);
             }
 
-            // Add role if creation is successful
             if (result.Succeeded)
             {
                 var roleName = model.IsSuperAdmin ? AdminRole.SuperAdmin : AdminRole.RegularAdmin;
@@ -104,8 +93,6 @@ namespace TE_Project.Services
                 {
                     _logger.LogError("Failed to add user {UserId} to role {Role}: {Errors}", 
                         user.Id, roleName, string.Join(", ", roleResult.Errors));
-                        
-                    // Cleanup the user if role assignment fails
                     await _userManager.DeleteAsync(user);
                     return (roleResult, string.Empty);
                 }
@@ -137,7 +124,9 @@ namespace TE_Project.Services
                 return (false, string.Empty, string.Empty, false);
             }
 
-            // Get device and IP info
+            await _tokenService.RevokeAllUserTokensAsync(user.Id);
+            _logger.LogInformation("Revoked all previous tokens for user {UserId} during login", user.Id);
+
             var deviceInfo = _httpContextAccessor.HttpContext?.Request.Headers["User-Agent"].ToString();
             var ipAddress = _httpContextAccessor.HttpContext?.Connection.RemoteIpAddress?.ToString();
 
@@ -204,11 +193,9 @@ namespace TE_Project.Services
             if (user == null)
                 return false;
 
-            // Super admins can access any plant
             if (user.IsSuperAdmin)
                 return true;
 
-            // Regular admins can only access their assigned plant
             return user.PlantId == plantId;
         }
 
@@ -221,13 +208,8 @@ namespace TE_Project.Services
                 return (false, "User not found", string.Empty);
             }
 
-            // Generate a new random password
             var newPassword = GenerateRandomPassword();
-            
-            // Create reset token
             var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-            
-            // Reset password
             var result = await _userManager.ResetPasswordAsync(user, resetToken, newPassword);
             
             if (!result.Succeeded)
@@ -237,14 +219,10 @@ namespace TE_Project.Services
                 return (false, string.Join(", ", result.Errors.Select(e => e.Description)), string.Empty);
             }
             
-            // Set flag to require password change on next login
             user.RequirePasswordChange = true;
             user.UpdatedAt = DateTime.UtcNow;
             await _userManager.UpdateAsync(user);
-            
-            // Revoke all active tokens for the user
             await _tokenService.RevokeAllUserTokensAsync(userId);
-            
             _logger.LogInformation("Password reset successfully for user {UserId}", userId);
             return (true, "Password reset successfully", newPassword);
         }
@@ -258,10 +236,7 @@ namespace TE_Project.Services
                 return (false, "User not found");
             }
             
-            // Revoke all tokens
             await _tokenService.RevokeAllUserTokensAsync(userId);
-            
-            // Delete user
             var result = await _userManager.DeleteAsync(user);
             
             if (!result.Succeeded)
@@ -415,7 +390,6 @@ namespace TE_Project.Services
             return result;
         }
 
-
         public async Task<IEnumerable<UserDto>> GetAdminsByPlantIdAsync(int plantId)
         {
             var users = await _userManager.Users
@@ -449,17 +423,13 @@ namespace TE_Project.Services
 
         private static string DeterminePassword(RegisterAdminDto model)
         {
-            // Use provided password, or fallback to TEID directly
             return !string.IsNullOrEmpty(model.Password)
                 ? model.Password
                 : model.TEID + "_init";
         }
 
-        // The GenerateStrongPassword method has been removed since it's no longer needed
-
         private static string GenerateRandomPassword()
         {
-            // Generate a random strong password with at least 12 characters
             var random = new Random();
             const string upperChars = "ABCDEFGHJKLMNPQRSTUVWXYZ";
             const string lowerChars = "abcdefghijkmnopqrstuvwxyz";
@@ -468,20 +438,17 @@ namespace TE_Project.Services
             
             var password = new StringBuilder();
             
-            // Add at least one of each required character type
             password.Append(upperChars[random.Next(upperChars.Length)]);
             password.Append(lowerChars[random.Next(lowerChars.Length)]);
             password.Append(digitChars[random.Next(digitChars.Length)]);
             password.Append(specialChars[random.Next(specialChars.Length)]);
             
-            // Add 8 more random characters
             const string allChars = upperChars + lowerChars + digitChars + specialChars;
             for (int i = 0; i < 8; i++)
             {
                 password.Append(allChars[random.Next(allChars.Length)]);
             }
             
-            // Shuffle the password
             return new string(password.ToString().OrderBy(x => Guid.NewGuid()).ToArray());
         }
 

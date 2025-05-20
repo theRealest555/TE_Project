@@ -5,20 +5,28 @@ using System.Security.Cryptography;
 using TE_Project.Enums;
 using TE_Project.Helpers;
 using TE_Project.Services.Interfaces;
+using TE_Project.Repositories.Interfaces;
 
 namespace TE_Project.Services
 {
     public class FileService : IFileService
     {
-        private readonly IWebHostEnvironment _environment;
         private readonly ILogger<FileService> _logger;
+        private readonly IPlantRepository _plantRepository;
         private const int MaxFilesPerFolder = 100;
         private static readonly string[] AllowedExtensions = { ".jpg", ".jpeg", ".png" };
+        
+        private readonly string _customUploadPath = @"C:\Users\youne\OneDrive\Bureau\test";
 
-        public FileService(IWebHostEnvironment environment, ILogger<FileService> logger)
+        public FileService(IWebHostEnvironment environment, ILogger<FileService> logger, IPlantRepository plantRepository)
         {
-            _environment = environment ?? throw new ArgumentNullException(nameof(environment));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _plantRepository = plantRepository ?? throw new ArgumentNullException(nameof(plantRepository));
+            
+            if (!Directory.Exists(_customUploadPath))
+            {
+                Directory.CreateDirectory(_customUploadPath);
+            }
         }
 
         public async Task<string> SaveFileAsync(IFormFile file, int plantId, FileType fileType, string fileName)
@@ -33,30 +41,25 @@ namespace TE_Project.Services
                     throw new ArgumentException("Invalid file. File must be an image (jpg, jpeg, png) and less than 5MB.");
                 }
 
-                // Double-check file extension security
                 var extension = Path.GetExtension(fileName).ToLowerInvariant();
                 if (!AllowedExtensions.Contains(extension))
                 {
                     throw new ArgumentException($"File extension {extension} is not allowed.");
                 }
 
-                var folderPath = GetNewFolderPath(plantId, fileType);
+                var folderPath = await GetNewFolderPath(plantId, fileType);
                 
-                // Create folder if it doesn't exist
                 Directory.CreateDirectory(folderPath);
 
                 var filePath = Path.Combine(folderPath, fileName);
                 
-                // Extra security: Ensure we don't overwrite existing files
                 if (File.Exists(filePath))
                 {
-                    // Add a unique suffix to avoid conflicts
                     var fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
                     fileName = $"{fileNameWithoutExt}_{Guid.NewGuid():N}{extension}";
                     filePath = Path.Combine(folderPath, fileName);
                 }
 
-                // Save the file
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
@@ -82,13 +85,11 @@ namespace TE_Project.Services
                 var extension = Path.GetExtension(originalFileName);
                 var nameWithoutExtension = Path.GetFileNameWithoutExtension(originalFileName);
 
-                // Validate the file name according to type
                 if (!FileValidationHelper.IsValidFileName(originalFileName, fileType))
                 {
                     throw new ArgumentException($"File name does not match the pattern for {fileType}");
                 }
 
-                // Sanitize the filename to prevent path traversal
                 var sanitizedName = SanitizeFileName(nameWithoutExtension);
                 
                 return $"{sanitizedName}{extension}";
@@ -100,23 +101,30 @@ namespace TE_Project.Services
             }
         }
 
-        public string GetNewFolderPath(int plantId, FileType fileType)
+        public async Task<string> GetNewFolderPath(int plantId, FileType fileType)
         {
             if (plantId <= 0)
             {
                 throw new ArgumentException("Invalid plant ID");
             }
             
-            var baseUploadFolder = Path.Combine(_environment.WebRootPath, "uploads");
+            var plant = await _plantRepository.GetByIdAsync(plantId);
+            if (plant == null)
+            {
+                throw new ArgumentException($"Plant with ID {plantId} not found");
+            }
+            
+            var sanitizedPlantName = SanitizeFileName(plant.Name);
+            
+            var baseUploadFolder = _customUploadPath;
 
-            // Create plant folder if it doesn't exist
-            var plantFolderPath = Path.Combine(baseUploadFolder, plantId.ToString());
+            var plantFolderName = $"{sanitizedPlantName}";
+            var plantFolderPath = Path.Combine(baseUploadFolder, plantFolderName);
             if (!Directory.Exists(plantFolderPath))
             {
                 Directory.CreateDirectory(plantFolderPath);
             }
 
-            // Create file type folder if it doesn't exist
             var fileTypeFolderName = fileType switch
             {
                 FileType.Cin => "cin",
@@ -131,7 +139,6 @@ namespace TE_Project.Services
                 Directory.CreateDirectory(fileTypeFolderPath);
             }
 
-            // Find the last numbered folder or create folder 1
             var folders = Directory.GetDirectories(fileTypeFolderPath)
                 .Select(d => new DirectoryInfo(d).Name)
                 .Where(name => int.TryParse(name, out _))
@@ -145,7 +152,6 @@ namespace TE_Project.Services
                 folderNumber = folders[folders.Count - 1];
                 var currentFolderPath = Path.Combine(fileTypeFolderPath, folderNumber.ToString());
 
-                // Check if the current folder has reached the maximum file limit
                 var fileCount = Directory.GetFiles(currentFolderPath).Length;
                 if (fileCount >= MaxFilesPerFolder)
                 {
@@ -206,18 +212,17 @@ namespace TE_Project.Services
             }
         }
 
-        // Sanitize filename to prevent path traversal attacks
         private static string SanitizeFileName(string fileName)
         {
             if (string.IsNullOrEmpty(fileName))
                 return fileName;
 
-            // Remove any invalid characters
             var invalidChars = Path.GetInvalidFileNameChars();
             var sanitized = new string(fileName.Where(c => !invalidChars.Contains(c)).ToArray());
             
-            // Further sanitize by removing potentially dangerous patterns
             sanitized = sanitized.Replace("..", string.Empty);
+            
+            sanitized = sanitized.Replace(" ", "_");
             
             return sanitized;
         }

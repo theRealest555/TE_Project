@@ -50,7 +50,6 @@ namespace TE_Project.Services
                 new Claim("RequirePasswordChange", user.RequirePasswordChange.ToString())
             };
             
-            // Add roles as claims
             foreach (var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
@@ -77,19 +76,16 @@ namespace TE_Project.Services
 
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 
-            // Trim device info to prevent database field overflow
             if (deviceInfo?.Length > 100)
             {
                 deviceInfo = deviceInfo[0..100];
             }
             
-            // Trim IP address to prevent database field overflow
             if (ipAddress?.Length > 45)
             {
                 ipAddress = ipAddress[0..45];
             }
 
-            // Save token to database
             var userToken = new UserToken
             {
                 Token = tokenString,

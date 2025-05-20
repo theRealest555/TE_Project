@@ -7,7 +7,7 @@ namespace TE_Project.Services.Interfaces
     {
         Task<string> SaveFileAsync(IFormFile file, int plantId, FileType fileType, string fileName);
         string GetFileNameForSaving(string originalFileName, FileType fileType);
-        string GetNewFolderPath(int plantId, FileType fileType);
+        Task<string> GetNewFolderPath(int plantId, FileType fileType);
         Task<bool> DeleteFileAsync(string filePath);
         Task<byte[]?> GetFileAsync(string filePath);
     }
