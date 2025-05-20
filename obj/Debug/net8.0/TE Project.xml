@@ -696,16 +696,16 @@
             Gets token validation parameters
             </summary>
         </member>
-        <member name="T:TE_Project.Migrations.initmigration">
+        <member name="T:TE_Project.Migrations.Intimigration">
             <inheritdoc />
         </member>
-        <member name="M:TE_Project.Migrations.initmigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:TE_Project.Migrations.Intimigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:TE_Project.Migrations.initmigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:TE_Project.Migrations.Intimigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:TE_Project.Migrations.initmigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:TE_Project.Migrations.Intimigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

@@ -156,19 +156,19 @@ app.UseAuthorization();
 app.MapControllers();
 
 // Seed data
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        await SeedData.InitializeAsync(services);
-    }
-    catch (Exception ex)
-    {
-        var seedLogger = services.GetRequiredService<ILogger<Program>>();
-        seedLogger.LogError(ex, "An error occurred while seeding the database.");
-    }
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var services = scope.ServiceProvider;
+//     try
+//     {
+//         await SeedData.InitializeAsync(services);
+//     }
+//     catch (Exception ex)
+//     {
+//         var seedLogger = services.GetRequiredService<ILogger<Program>>();
+//         seedLogger.LogError(ex, "An error occurred while seeding the database.");
+//     }
+// }
 
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
 logger.LogInformation("API is running with CORS enabled for http://localhost:4200");

@@ -12,8 +12,8 @@ using TE_Project.Data;
 namespace TE_Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250517180932_initmigration")]
-    partial class initmigration
+    [Migration("20250519115130_Intimigration")]
+    partial class Intimigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

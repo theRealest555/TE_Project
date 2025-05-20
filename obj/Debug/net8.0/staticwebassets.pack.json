@@ -37,6 +37,18 @@
       "PackagePath": "staticwebassets\\uploads\\1\\pic\\1\\CD2323232_i.jpg"
     },
     {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\3\\cin\\1\\CD21212.jpg",
+      "PackagePath": "staticwebassets\\uploads\\3\\cin\\1\\CD21212.jpg"
+    },
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\3\\grey_card\\1\\565-H-4545.jpg",
+      "PackagePath": "staticwebassets\\uploads\\3\\grey_card\\1\\565-H-4545.jpg"
+    },
+    {
+      "Id": "C:\\Users\\youne\\OneDrive\\Bureau\\TE\\TE Project\\wwwroot\\uploads\\3\\pic\\1\\CD21212_i.jpg",
+      "PackagePath": "staticwebassets\\uploads\\3\\pic\\1\\CD21212_i.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TE Project.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

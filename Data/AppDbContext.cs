@@ -10,7 +10,6 @@ namespace TE_Project.Data
         {
         }
 
-        // Use the 'new' keyword to hide the inherited 'Users' property
         public new DbSet<User> Users { get; set; }
 
         public DbSet<Plant> Plants { get; set; }

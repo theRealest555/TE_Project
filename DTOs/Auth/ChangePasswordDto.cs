@@ -2,9 +2,6 @@
 
 namespace TE_Project.DTOs.Auth
 {
-    /// <summary>
-    /// Data transfer object for changing user password
-    /// </summary>
     public class ChangePasswordDto
     {
         /// <summary>
